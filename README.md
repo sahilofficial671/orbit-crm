@@ -1,2 +1,2 @@
 # Orbit CRM
-[![StyleCI](https://styleci.io/repos/302090792/shield)](https://styleci.io/repos/316787718)
+[![StyleCI](https://github.styleci.io/repos/316787718/shield?branch=main)](https://github.styleci.io/repos/316787718?branch=main)
