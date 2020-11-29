@@ -29,7 +29,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/dashboard', function(){ return view('dashboard'); })->name('dashboard');
 
         /* Account */
-        Route::get('/account/{account}/dashboard', 'AccountController@dashboard')->name('account.dashboard');
+        Route::get('/account/{account?}/dashboard', 'AccountController@dashboard')->name('account.dashboard');
 
         /* Company */
         Route::get('/company', 'CompanyController@index')->name('company.index');

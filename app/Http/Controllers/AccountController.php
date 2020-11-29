@@ -36,12 +36,12 @@ class AccountController extends Controller
 
         if (InstanceHelper::getAccounts()->contains('id', $accountId)) {
             if(Account::find($accountId)->companies->count()){
-                return back()->with('error', "Company have contacts so it can't be deleted!");
+                return redirect()->route('account.index')->with('error', "Account have companies so it can't be deleted!");
             }
-            // Company::find($accountId)->delete();
+            // Account::find($accountId)->delete();
             return back()->with('success', 'Company Deleted Successfully!');
         }
 
-        return back()->with('error', 'Company Not Found!');
+        return back()->with('error', 'Account Not Found!');
     }
 }
