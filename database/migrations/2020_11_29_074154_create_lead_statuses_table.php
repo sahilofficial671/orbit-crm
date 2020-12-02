@@ -17,7 +17,7 @@ class CreateLeadStatusesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
-            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('account_id');
             $table->unsignedBigInteger('created_by');
             $table->enum('status', ['0', '1']);
             $table->timestamps();

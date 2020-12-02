@@ -1,0 +1,103 @@
+:root{
+    --dark-primary-bg-color:#1d2743;
+    --dark-secondary-bg-color:#080b13;
+    --dark-default-text-color:#ffffff;
+    --dark-heading-color:#1d2743;
+}
+.app-dark .sidebar{
+    background: var(--dark-primary-bg-color);
+}
+.app-dark .sidebar .menu-label .label{
+    color:#ffffff;
+}
+.app-dark .sidebar .menu-label .icon{
+    color:#ffffff;
+}
+.app-dark .sidebar .sidebar-menu .menu-item:hover{
+    background-color: var( --dark-secondary-bg-color);
+}
+.app-dark .sidebar .sidebar-menu .menu-item.focused{
+    background-color: var( --dark-secondary-bg-color);
+}
+.app-dark .sidebar .sidebar-menu .menu-item:hover .menu-label .label, .app-dark .sidebar .sidebar-menu .menu-item:hover .menu-label .icon{
+    color:var(--dark-default-text-color);
+}
+.app-dark .sidebar .active-account{
+    color: var(--dark-default-text-color);
+    background: var(--dark-secondary-bg-color);
+}
+.sidebar .active-account .account{
+    display: flex;
+    align-items: center;
+    padding: 18px 20px;
+}
+.sidebar .active-account .account .icon{
+    display: flex;
+    align-items: center;
+    margin-right: 7px;
+}
+.app-container .sidebar{
+    position: fixed;
+    height: 100%;
+    width: 25%;
+    max-width:250px;
+}
+.app-dark .title-container.main .head{
+    color: var(--dark-heading-color);
+}
+.title-container.main .head{
+    font-size: 32px;
+}
+.title-container.main{
+    margin-bottom:1.5rem;
+    border-bottom: 1px solid #dee2e6;
+}
+.app-container > .content{
+    margin-left:256px;
+}
+.app-dark .navbar{
+    background-color: #7798f6;
+}
+#app .navbar-brand{
+    display: flex;
+    align-items: center;
+}
+.navbar-brand .icon{
+    margin-right: 7px;
+}
+
+.sidebar .sidebar-menu{
+    padding:0px;
+}
+.sidebar .sidebar-menu .menu-item .menu-label .icon{
+    display: flex;
+    align-items: center;
+    transition: inherit;
+}
+.sidebar .sidebar-menu .menu-item .menu-label .label{
+    margin-left:10px;
+    transition: inherit;
+}
+.sidebar .sidebar-menu .menu-item .menu-label{
+    display: flex;
+    align-items: center;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 29px;
+    padding-right: 10px;
+    transition: all 0.2s ease-in-out;
+}
+.sidebar .sidebar-menu .menu-item .menu-label{
+    text-decoration:none;
+}
+
+.sidebar .sidebar-menu .menu-item:hover .menu-label .icon{
+    margin-left: 10px;
+}
+
+td .delete{
+    max-height:20px;
+}
+.delete svg{
+    cursor: pointer;
+}

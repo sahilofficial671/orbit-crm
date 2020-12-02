@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Auth;
 class Account extends Model
 {
     use HasFactory;
@@ -31,5 +31,9 @@ class Account extends Model
     public function companies()
     {
         return $this->hasMany('App\Models\Company', 'account_id', 'id');
+    }
+    public static function getAccount()
+    {
+        return Account::where('created_by', Auth::id())->with(['user', 'companies'])->first();
     }
 }

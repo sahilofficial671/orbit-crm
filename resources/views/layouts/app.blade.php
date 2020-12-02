@@ -15,21 +15,19 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-    <div id="app" class="{{$class ?? ''}}">
+    <div id="app" class="app-dark {{$class ?? ''}}">
         @include('components.header')
-
-        <main class="py-4">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-3 col-xl-2 bg-white">
-                        @include('components.sidebar')
-                    </div>
-                    <div class="col-md-9 col-xl-10">
-                        @yield('content')
-                    </div>
+        <main>
+            <div class="app-container">
+                <div class="sidebar">
+                    @include('components.sidebar')
+                </div>
+                <div class="content py-4">
+                    @yield('content')
                 </div>
             </div>
         </main>

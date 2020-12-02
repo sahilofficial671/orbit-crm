@@ -16,7 +16,7 @@ class CompanyController extends Controller
 
     public function index(Request $request)
     {
-        $companies = InstanceHelper::getAuthCompanies();
+        $companies = InstanceHelper::getAccountCompanies();
 
         return view('company.index')->with('companies', $companies);
     }
@@ -40,13 +40,12 @@ class CompanyController extends Controller
     public function delete(Request $request)
     {
         $companyId = $request->company;
-        $contains = InstanceHelper::getAuthCompanies()->contains('id', $companyId);
 
-        if ($contains) {
+        if (InstanceHelper::getAuthCompanies()->contains('id', $companyId)) {
             if(Company::find($companyId)->contacts->count()){
                 return back()->with('error', "Company have contacts so it can't be deleted!");
             }
-            // Company::find($companyId)->delete();
+            Company::find($companyId)->delete();
             return back()->with('success', 'Company Deleted Successfully!');
         }
 

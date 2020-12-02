@@ -13,12 +13,12 @@ class AccountSeeder extends Seeder
      */
     public function run()
     {
-        $company = new Account();
-        $company->name = 'Webiggle Digital Agency';
-        $company->domain = 'webiggle.com';
-        $company->pinned = '0';
-        $company->created_by = 1;
-        $company->status = '1';
-        $company->save();
+        $account = new Account();
+        $account->name = 'Webiggle Digital Agency';
+        $account->domain = 'webiggle.com';
+        $account->pinned = '0';
+        $account->created_by = 1;
+        $account->status = '1';
+        $account->save();
     }
 }

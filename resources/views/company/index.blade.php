@@ -28,7 +28,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="POST" action="{{ route('company.create') }}">
+                    <form method="POST" action="{{ route('company.create', ['account' => Session::get('account')->id]) }}">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
