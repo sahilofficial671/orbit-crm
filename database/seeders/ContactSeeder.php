@@ -18,6 +18,8 @@ class ContactSeeder extends Seeder
         $contact->name = 'Webiggle.com';
         $contact->email = 'info@webiggle.com';
         $contact->account_id = 1;
+        $contact->company_id = 1;
+        $contact->created_by = 1;
         $contact->status = '1';
         $contact->save();
     }

@@ -17,8 +17,10 @@ class OneAccountPerUserOnly
     public function handle(Request $request, Closure $next)
     {
         if(!InstanceHelper::getAccount()){
+            $request->session()->forget('account');
             return $next($request);
         }
+
         abort(403);
     }
 }

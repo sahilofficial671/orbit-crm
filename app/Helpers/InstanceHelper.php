@@ -17,32 +17,32 @@ class InstanceHelper{
     public static function getAccountCompanies(Int $accountId = NULL)
     {
         if($accountId){
-            return Company::where('account_id', $accountId)->with(['contacts', 'user'])->get();
+            return Company::where('account_id', $accountId)->with(['contacts', 'user', 'account'])->get();
         }
-        return Company::where('account_id', Account::getAccount()->id)->with(['contacts', 'user'])->get();
+        return Company::where('account_id', Account::getAccount()->id)->with(['contacts', 'user', 'account'])->get();
     }
 
     public static function getAccountContacts(Int $accountId = NULL)
     {
         if($accountId){
-            return Contact::where('account_id', $accountId)->with(['account', 'user'])->get();
+            return Contact::where('account_id', $accountId)->with(['company', 'user', 'account'])->get();
         }
-        return Contact::where('account_id', Account::getAccount()->id)->with(['account', 'user'])->get();
+        return Contact::where('account_id', Account::getAccount()->id)->with(['company', 'user', 'account'])->get();
     }
 
     public static function getAccount(Int $userId = NULL)
     {
         if($userId){
-            return Account::where('created_by', $userId)->with(['companies', 'user'])->first();
+            return Account::where('created_by', $userId)->with(['companies', 'user', 'contacts'])->first();
         }
-        return Account::where('created_by', Auth::id())->with(['companies', 'user'])->first();
+        return Account::where('created_by', Auth::id())->with(['companies', 'user', 'contacts'])->first();
     }
     public static function getAccounts(Int $userId = NULL)
     {
         if($userId){
-            return Account::where('created_by', $userId)->with(['companies', 'user'])->get();
+            return Account::where('created_by', $userId)->with(['companies', 'user', 'contacts'])->first();
         }
-        return Account::where('created_by', Auth::id())->with(['companies', 'user'])->get();
+        return Account::where('created_by', Auth::id())->with(['companies', 'user', 'contacts'])->first();
     }
 }
 

@@ -18,7 +18,7 @@ class MatchAccountWithSession
     public function handle(Request $request, Closure $next)
     {
 
-        if(InstanceHelper::getAccount()->id === Session::get('account')->id){
+        if((int)$request->route('account') === Session::get('account')->id){
             return $next($request);
         }
 

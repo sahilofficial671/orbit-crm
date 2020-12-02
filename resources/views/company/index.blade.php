@@ -51,6 +51,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">No. of Contacts</th>
+                        <th scope="col">Created By</th>
                         <th scope="col" class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -62,6 +63,11 @@
                                 <td>{{$company->name}}</td>
                                 <td>{{$company->email}}</td>
                                 <td>{{$company->contacts->count()}}</td>
+                                @if ($company->user->name == Auth::user()->name)
+                                    <td>You</td>
+                                @else
+                                    <td>{{$company->user->name}}</td>
+                                @endif
                                 <td>
                                     <div class="delete">
                                         <a href="{{ route('company.delete').'?company='.$company->id }}">
@@ -74,7 +80,7 @@
                             </tr>
                         @endforeach
                     @else
-                    <td colspan="5" class="text-center">No Company Found</td>
+                    <td colspan="6" class="text-center">No Company Found</td>
                     @endif
                 </tbody>
                 </table>

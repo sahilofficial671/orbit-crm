@@ -9,7 +9,6 @@ use App\Models\User;
 use Auth;
 use App\Traits\CommonTraits;
 use App\Helpers\InstanceHelper;
-
 class CompanyController extends Controller
 {
     use CommonTraits;
@@ -20,7 +19,7 @@ class CompanyController extends Controller
 
         return view('company.index')->with('companies', $companies);
     }
-    public function create(Request $request)
+    public function create($accountId, Request $request)
     {
         $validatedData = $request->validate([
             'name' => 'required|max:50',
@@ -30,6 +29,7 @@ class CompanyController extends Controller
         $company = new Company();
         $company->name = $request->name;
         $company->email = $request->email;
+        $company->account_id = $accountId;
         $company->created_by = Auth::id();
         $company->status = 1;
         $company->save();

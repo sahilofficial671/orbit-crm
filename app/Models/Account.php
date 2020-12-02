@@ -32,6 +32,10 @@ class Account extends Model
     {
         return $this->hasMany('App\Models\Company', 'account_id', 'id');
     }
+    public function contacts()
+    {
+        return $this->hasMany('App\Models\Contact', 'account_id', 'id');
+    }
     public static function getAccount()
     {
         return Account::where('created_by', Auth::id())->with(['user', 'companies'])->first();

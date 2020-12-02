@@ -13,11 +13,12 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
-        // $company = new Company();
-        // $company->name = 'Webiggle.com';
-        // $company->email = 'info@webiggle.com';
-        // $company->account_id = 1;
-        // $company->status = '1';
-        // $company->save();
+        $company = new Company();
+        $company->name = 'Webiggle.com';
+        $company->email = 'info@webiggle.com';
+        $company->account_id = 1;
+        $company->created_by = 1;
+        $company->status = '1';
+        $company->save();
     }
 }

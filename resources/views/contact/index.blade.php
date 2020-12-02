@@ -16,7 +16,7 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-header">
-                    Add Company
+                    Add Contact
                 </div>
                 <div class="card-body">
                     @if ($errors->any())

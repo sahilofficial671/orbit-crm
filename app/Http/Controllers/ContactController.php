@@ -14,21 +14,12 @@ class ContactController extends Controller
 {
     use CommonTraits;
 
-    public function index(Int $accountId, Request $request)
+    public function index($accountId, Request $request)
     {
-        $account = InstanceHelper::getSelectedAccount();
-
-        if($account->id === $accountId){
-            return view('contact.index')->with('contacts', InstanceHelper::getAccountContacts());
-        }
-        return redirect()->route('account.index')->with('info', 'Please select one of your account first!.');
+        return view('contact.index')->with('contacts', InstanceHelper::getAccountContacts());
     }
-    public function create(Int $accountId, Request $request)
+    public function create($accountId, Request $request)
     {
-        if($this->validateAccountWithSession($accountId)){
-            return redirect()->route('account.index')->with('info', 'Please select one of your account first!.');
-        }
-
         $validatedData = $request->validate([
             'name' => 'required|max:50',
             'email' => 'required|email',
@@ -37,11 +28,12 @@ class ContactController extends Controller
         $contact = new Contact();
         $contact->name = $request->name;
         $contact->email = $request->email;
-        $contact->account_id = $request->account_id;
+        $contact->account_id = $accountId;
+        $contact->created_by = Auth::id();
         $contact->status = '1';
         $contact->save();
 
-        return back()->with('success', 'Company Added Successfully!');
+        return back()->with('success', 'Contact Added Successfully!');
     }
     public function delete(Request $request)
     {
@@ -53,10 +45,5 @@ class ContactController extends Controller
         }
 
         return back()->with('error', 'Contact Not Found!');
-    }
-
-    public function validateAccountWithSession(Int $accountId)
-    {
-        return $accountId === InstanceHelper::getSelectedAccount();
     }
 }

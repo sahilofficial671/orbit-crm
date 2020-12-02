@@ -19,7 +19,6 @@ class CreateContactsTable extends Migration
             $table->string('email')->unique();
             $table->string('job_title')->nullable();
             $table->unsignedBigInteger('lead_status_id')->nullable();
-            $table->unsignedBigInteger('account_id');
             $table->string('company_associated')->nullable();
             $table->string('description')->nullable();
             $table->unsignedBigInteger('phone')->nullable();
@@ -30,7 +29,9 @@ class CreateContactsTable extends Migration
             $table->unsignedInteger('postcode')->nullable();
             $table->string('state_code', 2)->nullable();
             $table->string('country_code', 2)->nullable();
-            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('account_id');
+            $table->unsignedBigInteger('company_id')->nullable();
+            $table->unsignedBigInteger('created_by');
             $table->enum('status', ['0', '1']);
             $table->timestamps();
         });

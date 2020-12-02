@@ -37,10 +37,14 @@ class Contact extends Model
 
     public function account()
     {
-        return $this->belongsTo(Account::class);
+        return $this->belongsTo('App\Models\Account', 'account_id', 'id');
+    }
+    public function company()
+    {
+        return $this->belongsTo('App\Models\Company', 'company_id', 'id');
     }
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Models\Company', 'created_by', 'id');
     }
 }

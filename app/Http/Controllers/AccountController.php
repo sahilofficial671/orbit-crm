@@ -34,7 +34,7 @@ class AccountController extends Controller
     {
         return view('account.create');
     }
-    public function submit($accountId, Request $request)
+    public function submit(Request $request)
     {
         $validatedData = $request->validate([
             'name' => 'required|max:50',
@@ -49,6 +49,6 @@ class AccountController extends Controller
         $account->status = '1';
         $account->save();
 
-        return redirect()->route('app.dashboard')->with('success', 'Account Create Successfully!');
+        return redirect()->route('app.dashboard')->with('success', 'Account Created Successfully!');
     }
 }

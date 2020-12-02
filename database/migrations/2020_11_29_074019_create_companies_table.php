@@ -18,7 +18,6 @@ class CreateCompaniesTable extends Migration
             $table->string('name', 100);
             $table->string('email', 50)->unique();
             $table->string('description')->nullable();
-            $table->unsignedBigInteger('account_id');
             $table->unsignedBigInteger('phone')->nullable();
             $table->unsignedBigInteger('landline')->nullable();
             $table->string('fax')->nullable();
@@ -27,6 +26,8 @@ class CreateCompaniesTable extends Migration
             $table->unsignedInteger('postcode')->nullable();
             $table->string('state_code', 2)->nullable();
             $table->string('country_code', 2)->nullable();
+            $table->unsignedBigInteger('account_id');
+            $table->unsignedBigInteger('created_by');
             $table->enum('status', ['0', '1']);
             $table->timestamps();
         });

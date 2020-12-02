@@ -22,6 +22,7 @@ class CreateAccountFirst
             Session::put('account', InstanceHelper::getAccount());
             return $next($request);
         }
+
         return redirect()->route('account.create');
     }
 }

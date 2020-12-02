@@ -36,8 +36,12 @@ class Company extends Model
     {
         return $this->belongsTo('App\Models\User', 'created_by', 'id');
     }
+    public function account()
+    {
+        return $this->belongsTo('App\Models\Account', 'account_id', 'id');
+    }
     public function contacts()
     {
-        return $this->hasMany('App\Models\Contact', 'company_id', 'id');
+        return $this->hasMany('App\Models\Contact', 'id', 'company_id');
     }
 }
