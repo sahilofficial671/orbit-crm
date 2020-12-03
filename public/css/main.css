@@ -39,9 +39,9 @@
 .app-container .sidebar{
     position: fixed;
     height: 100%;
-    width: 25%;
-    max-width:250px;
+    z-index: 1;
 }
+
 .app-dark .title-container.main .head{
     color: var(--dark-heading-color);
 }
@@ -52,9 +52,7 @@
     margin-bottom:1.5rem;
     border-bottom: 1px solid #dee2e6;
 }
-.app-container > .content{
-    margin-left:256px;
-}
+
 .app-dark .navbar{
     background-color: #7798f6;
 }
@@ -100,4 +98,24 @@ td .delete{
 }
 .delete svg{
     cursor: pointer;
+}
+.hidden{
+    display:none;
+}
+
+@media (max-width:600px){
+    .app-container .sidebar{
+        width: 100%;
+        max-width:250px;
+    }
+}
+@media (min-width:768px){
+    .app-container > .content{
+        margin-left:256px;
+    }
+    .app-container .sidebar{
+        width: 25%;
+        max-width:250px;
+    }
+
 }

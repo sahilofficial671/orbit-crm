@@ -56,6 +56,20 @@
                 <div class="label">Accounts</div>
             </a>
         </li>
+        <li class="menu-item">
+            <a href="{{ route('logout') }}" class="menu-label" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <div class="icon">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5A.5.5 0 0 0 4 8z"/>
+                    </svg>
+                </div>
+                <div class="label">{{ __('Logout') }}</div>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </a>
+        </li>
     @else
         <li class="menu-item">
             <a href="{{route('account.index')}}" class="menu-label">
