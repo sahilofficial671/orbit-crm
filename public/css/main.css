@@ -105,6 +105,9 @@ td .delete{
 
 @media (max-width:600px){
     .app-container .sidebar{
+        display:none;
+    }
+    .app-container .sidebar{
         width: 100%;
         max-width:250px;
     }
