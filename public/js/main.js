@@ -1,8 +1,12 @@
-$(document).ready(function() {
+
+$(document).load(function(){
     if($(window).width() < 600){
         $('.sidebar').css('display', 'none');
         $('#navbarSupportedContent').addClass('hidden');
     }
+});
+$(document).ready(function() {
+
     $('nav button').on('click', function() {
         var sidebar = $('.sidebar');
         if($(window).width() < 600){
