@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//App Routes
 Route::get('/', 'HomeController@index')->middleware('guest')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -41,3 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/account/create', 'AccountController@showCreateForm')->middleware('account.oneonly')->name('account.create');
     Route::post('/account/submit', 'AccountController@submit')->middleware('account.oneonly')->name('account.submit');
 });
+
+
+//test Routes
+Route::get('/test', 'TestController@test');
