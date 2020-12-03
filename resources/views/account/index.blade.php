@@ -13,7 +13,7 @@
     @alertInfo
     <div class="row">
         <div class="col-sm-12">
-            <table class="table table-bordered table-hover bg-white">
+            <table class="table table-responsive table-bordered table-hover bg-white">
                 <thead>
                     <tr>
                         <th scope="col" class="text-center" width="5%">#</th>

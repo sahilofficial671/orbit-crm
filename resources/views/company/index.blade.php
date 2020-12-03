@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="col-sm-6">
-            <table class="table table-bordered table-hover bg-white">
+            <table class="table table-responsive table-bordered table-hover bg-white">
                 <thead>
                     <tr>
                         <th scope="col" class="text-center">#</th>
