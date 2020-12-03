@@ -5,8 +5,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <div class="title mt-4 mb-4 border-bottom">
-                <h1>Company</h1>
+            <div class="title-container main">
+                <h1 class="head">Companies</h1>
             </div>
         </div>
     </div>
