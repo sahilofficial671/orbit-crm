@@ -44,5 +44,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/account/create', 'AccountController@showCreateForm')->middleware('account.oneonly')->name('account.create');
     Route::post('/account/submit', 'AccountController@submit')->middleware('account.oneonly')->name('account.submit');
-
 });
