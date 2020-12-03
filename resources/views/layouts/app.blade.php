@@ -9,6 +9,8 @@
 
     <title>{{ config('app.name', 'Laravel') }} Dashboard</title>
 
+    <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/png">
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
