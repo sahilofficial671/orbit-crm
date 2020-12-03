@@ -51,6 +51,6 @@ class User extends Authenticatable
     }
     public function accounts()
     {
-        return $this->hasMany('App\Models\Account', 'account_id');
+        return $this->hasMany('App\Models\Account', 'created_by');
     }
 }
