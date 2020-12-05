@@ -1,5 +1,4 @@
 <ul class="sidebar-menu">
-
     @if (Session::has('account'))
         <div class="active-account">
             <div class="account">

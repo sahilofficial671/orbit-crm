@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Helpers\InstanceHelper;
 
 class HomeController extends Controller
 {
@@ -14,6 +15,6 @@ class HomeController extends Controller
 
     public function dashboard(Request $request)
     {
-        return view('dashboard');
+        return view('dashboard')->with('account', InstanceHelper::getAccount());
     }
 }

@@ -19,6 +19,7 @@ class Contact extends Model
         'job_title',
         'lead_status_id',
         'company_associated',
+        'account_id',
         'company_id',
         'description',
         'phone',

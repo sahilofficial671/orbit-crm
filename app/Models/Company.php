@@ -26,6 +26,7 @@ class Company extends Model
         'postcode',
         'state',
         'country',
+        'account_id',
         'created_by',
         'status',
         'created_at',

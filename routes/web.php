@@ -18,7 +18,7 @@ Route::get('/', 'HomeController@index')->middleware('guest')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    /* Check if company selected for session or not */
+    /* Check if account selected for session or not */
     Route::middleware(['account.first'])->group(function () {
 
         Route::get('/accounts', 'AccountController@index')->name('account.index');
