@@ -1,14 +1,13 @@
 :root{
     --dark-primary-bg-color:#1d2743;
     --dark-secondary-bg-color:#080b13;
-    --dark-default-text-color:#ffffff;
+    --dark-default-text-color:rgb(255 255 255 / 90%);
     --dark-heading-color:#1d2743;
     --dark-alternate-bg-color:#7798f6;
     --dark-primary-text-color:#bebebe;
-    --dark-default-border-color: rgb(243 243 243 / 17%);
+    --dark-default-border-color: rgb(243 243 243 / 29%);
     --default-font: 'Roboto', sans-serif;
     --default-top-bar-height:54px;
-
 }
 .wrapper{
     position: relative;
@@ -26,8 +25,11 @@
 body{
     font-weight: 300;
 }
-.app{
+#app{
     font-weight: 400;
+    height: 100%;
+    position: fixed;
+    width: 100%;
 }
 .app-dark .sidebar{
     background: var(--dark-primary-bg-color);
@@ -45,10 +47,10 @@ body{
     background-color: var( --dark-secondary-bg-color);
 }
 .app-dark .sidebar .sidebar-menu .menu-item:hover .menu-label .label, .app-dark .sidebar .sidebar-menu .menu-item:hover .menu-label .icon{
-    color:var(--dark-default-text-color);
+    color:#ffffff;
 }
 .app-dark .sidebar .active-account{
-    color: var(--dark-default-text-color);
+    color: var(--white);
 }
 .app-dark .sidebar .active-account:after{
     content: "";
@@ -59,13 +61,20 @@ body{
     width: calc(100% - 30px);
     background-color: rgb(243 243 243 / 17%);
 }
+.app-dark .btn-link{
+    color: #43aaff;
+}
+.app-dark .btn-link:hover{
+    color: #1293fc;
+}
 .app-dark .card{
     background-color: var(--dark-primary-bg-color);
+    box-shadow:1px 0px 20px 13px rgb(0 45 110 / 24%);
 }
 .app-dark .card .card-title{
     color: var(--dark-primary-text-color);
 }
-.app-dark .card .card-footer{
+.app-dark .card .card-footer, .app-dark .card .card-header{
     border-color: var(--dark-default-border-color);
 }
 .app-dark .sidebar .brand{
@@ -79,13 +88,28 @@ body{
     border: 1px solid var(--dark-default-border-color);
     background-color: var(--dark-secondary-bg-color);
     color:var(--dark-default-text-color);
-    font-weight:200;
+    font-weight:300;
     font-size: 14px;
+    letter-spacing: 1px;
 }
 .app-dark .dropdown-menu{
     background: var(--dark-secondary-bg-color);
     border: 1px solid var(--dark-default-border-color);
     color:var(--dark-default-text-color)
+}
+.app-dark .btn.btn-primary{
+    background-color: #3358f4 !important;
+    background-image: linear-gradient(to bottom left, #3a83ca, #3358f4, #1d8cf8) !important;
+    background-image: -webkit-linear-gradient(to bottom left, #3a83ca, #3358f4, #1d8cf8) !important;
+    background-image: -o-linear-gradient(to bottom left, #3a83ca, #3358f4, #1d8cf8) !important;
+    background-image: -moz-linear-gradient(to bottom left, #3a83ca, #3358f4, #1d8cf8) !important;
+}
+.app-dark .btn.btn-primary:hover{
+    background-color: #3358f4 !important;
+    background-image: linear-gradient(to bottom left, #1d8cf8, #3358f4, #3a83ca) !important;
+    background-image: -webkit-linear-gradient(to bottom left, #1d8cf8, #3358f4, #3a83ca) !important;
+    background-image: -o-linear-gradient(to bottom left, #1d8cf8, #3358f4, #3a83ca) !important;
+    background-image: -moz-linear-gradient(to bottom left, #1d8cf8, #3358f4, #3a83ca) !important;
 }
 .dropdown-item{
     font-weight: 300;
