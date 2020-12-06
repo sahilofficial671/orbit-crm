@@ -12,7 +12,7 @@
                     @endif
                 </div>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropDown">
-                    <a href="#" class="dropdown-item">Profile</a>
+                    <a href="#" class="dropdown-item">Working on this right now!</a>
                 </div>
               </div>
         </ul>
