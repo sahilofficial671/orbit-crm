@@ -24,8 +24,9 @@ class CreateCompaniesTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('address')->nullable();
             $table->unsignedInteger('postcode')->nullable();
-            $table->string('state_code', 2)->nullable();
-            $table->string('country_code', 2)->nullable();
+            $table->string('city')->nullable();
+            $table->string('state', 2)->nullable();
+            $table->string('country', 2)->nullable();
             $table->unsignedBigInteger('account_id');
             $table->unsignedBigInteger('created_by');
             $table->enum('status', ['0', '1']);

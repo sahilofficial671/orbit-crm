@@ -1,9 +1,10 @@
 :root{
     --dark-primary-bg-color:#1d2743;
     --dark-secondary-bg-color:#080b13;
+    --dark-alternate-bg-color:#7798f6;
+    --dark-third-bg-color: rgb(57 66 93 / 38%);
     --dark-default-text-color:rgb(255 255 255 / 90%);
     --dark-heading-color:#1d2743;
-    --dark-alternate-bg-color:#7798f6;
     --dark-primary-text-color:#bebebe;
     --dark-default-border-color: rgb(243 243 243 / 29%);
     --default-font: 'Roboto', sans-serif;
@@ -26,7 +27,7 @@ body{
     font-weight: 300;
 }
 #app{
-    font-weight: 400;
+    font-weight: 300;
     height: 100%;
     position: fixed;
     width: 100%;
@@ -63,13 +64,16 @@ body{
 }
 .app-dark .btn-link{
     color: #43aaff;
+    border:0;
+    outline: 0;
 }
-.app-dark .btn-link:hover{
-    color: #1293fc;
-}
+
 .app-dark .card{
     background-color: var(--dark-primary-bg-color);
-    box-shadow:1px 0px 20px 13px rgb(0 45 110 / 24%);
+    box-shadow: 1px 0px 30px 13px rgb(0 45 110 / 24%);
+}
+.app-dark .card .card-header{
+    background-color: var(--dark-third-bg-color);
 }
 .app-dark .card .card-title{
     color: var(--dark-primary-text-color);
@@ -84,6 +88,13 @@ body{
 .app-dark .table-dark{
     background-color: var(--dark-primary-bg-color);
 }
+.app-dark .table-dark td, .app-dark .table-dark th, .app-dark .table-dark thead th{
+    border-color: var(--dark-default-border-color);
+}
+.app-dark .table-dark thead th{
+    background-color: var(--dark-third-bg-color);
+}
+
 .app-dark .form-control{
     border: 1px solid var(--dark-default-border-color);
     background-color: var(--dark-secondary-bg-color);
@@ -124,8 +135,19 @@ body{
 .table{
     margin-bottom: 0;
 }
+.table thead th:first-child{
+    min-width:50px;
+}
 .table thead th{
     border:0;
+    min-width:100px;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+.table.blank td:hover{
+    background-color: var(--dark-primary-bg-color);
 }
 .app-dark .table-dark tr td{
     border-bottom: var(--dark-default-border-color);
@@ -203,6 +225,7 @@ body{
     padding: 13px 23px;
     font-size: 18px;
     height:var(--default-top-bar-height);
+    font-weight: 400;
 }
 .sidebar .brand:hover{
     text-decoration: none;
@@ -225,6 +248,51 @@ body{
     position: fixed;
     height: 100%;
     z-index: 1;
+}
+.title-container.main:before{
+    content: '';
+    position: absolute;
+    background-color: var(--dark-primary-bg-color);
+    width: 7px;
+    height: 37px;
+    left: -5px;
+}
+
+.table::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+    background-color: var(--dark-primary-bg-color)
+
+}
+
+.table::-webkit-scrollbar {
+    width: 5px;
+    background-color: #F5F5F5;
+}
+
+.table::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: var(--dark-alternate-bg-color);
+    height:5px;
+}
+
+.table::-webkit-scrollbar-button, main::-webkit-scrollbar-button{
+    color:#000;
+    background-color: var(--dark-alternate-bg-color);
+}
+main::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+    background-color: var(--dark-primary-bg-color)
+
+}
+
+main::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+main::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: var(--dark-alternate-bg-color);
 }
 
 .title-container.main .head{
@@ -354,8 +422,21 @@ td .delete{
     height: 100%;
     max-height: 100%;
     position: relative;
+    overflow: auto;
 }
-
+.form-control option{
+    letter-spacing: 0.5px;
+}
+.btn, .form-control option{
+    font-weight: 300;
+}
+.alert{
+    font-weight: 400;
+    font-size: 14px;
+}
+.alert ul{
+    margin:0;
+}
 @media (max-width:600px){
     .sidebar{
         display:none;
@@ -364,8 +445,19 @@ td .delete{
         width: 100%;
         max-width:250px;
     }
+    .main-panel .content{
+        padding:1rem 0.2rem;
+    }
+}
+@media (min-width:601px){
+    .main-panel .content{
+        padding:1rem;
+    }
 }
 @media (min-width:768px){
+    .main-panel .content{
+        padding:1.5rem;
+    }
     .main-panel{
         float: right;
         width: calc(100% - 260px);

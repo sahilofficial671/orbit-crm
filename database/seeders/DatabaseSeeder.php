@@ -18,8 +18,10 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             AccountSeeder::class,
-            CompanySeeder::class,
-            ContactSeeder::class,
+            // CompanySeeder::class,
+            // ContactSeeder::class,
+            CountrySeeder::class,
+            StateSeeder::class,
         ]);
     }
 }

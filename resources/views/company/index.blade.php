@@ -45,7 +45,7 @@
         </div>
         <div class="col-sm-6">
             <div class="card">
-                <table class="table table-responsive table-hover">
+                <table class="table table-responsive table-striped table-hover @if(!$companies->count()) blank @endIf">
                     <thead>
                         <tr>
                             <th scope="col" class="text-center">#</th>

@@ -19,14 +19,14 @@ class CreateContactsTable extends Migration
             $table->string('email')->unique();
             $table->string('job_title')->nullable();
             $table->unsignedBigInteger('lead_status_id')->nullable();
-            $table->string('company_associated')->nullable();
             $table->string('description')->nullable();
-            $table->unsignedBigInteger('phone')->nullable();
-            $table->unsignedBigInteger('landline')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('landline')->nullable();
             $table->string('fax')->nullable();
             $table->string('avatar')->nullable();
             $table->string('address')->nullable();
-            $table->unsignedInteger('postcode')->nullable();
+            $table->string('postcode')->nullable();
+            $table->string('city')->nullable();
             $table->string('state_code', 2)->nullable();
             $table->string('country_code', 2)->nullable();
             $table->unsignedBigInteger('account_id');

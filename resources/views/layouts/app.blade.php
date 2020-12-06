@@ -39,7 +39,7 @@
 
             <main class="main-panel">
                 @include('components.topbar')
-                <div class="content py-4">
+                <div class="content">
                     @yield('content')
                 </div>
             </main>

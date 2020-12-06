@@ -18,7 +18,6 @@ class Contact extends Model
         'email',
         'job_title',
         'lead_status_id',
-        'company_associated',
         'account_id',
         'company_id',
         'description',
@@ -28,6 +27,7 @@ class Contact extends Model
         'avatar',
         'address',
         'postcode',
+        'city',
         'state',
         'country',
         'created_by',
@@ -47,5 +47,13 @@ class Contact extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\Company', 'created_by', 'id');
+    }
+    public function state()
+    {
+        return $this->hasOne('App\Models\State', 'code', 'state_code');
+    }
+    public function country()
+    {
+        return $this->hasOne('App\Models\Country', 'code', 'country_code');
     }
 }

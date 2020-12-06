@@ -29,4 +29,16 @@ $(document).ready(function() {
             }
         }
     });
+    $('#extraFieldCheck').on('change', function(){
+        var extra_fields = $('.extra-fields');
+        if(extra_fields.hasClass('hidden')){
+            extra_fields.slideDown(function(){
+                extra_fields.removeClass('hidden');
+            });
+            return;
+        }
+        extra_fields.slideUp(function(){
+            extra_fields.addClass('hidden');
+        });
+    });
 });

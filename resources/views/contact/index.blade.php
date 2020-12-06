@@ -31,28 +31,95 @@
                     <form method="POST" action="{{ route('contact.create', ['account' => Session::get('account')->id]) }}">
                         @csrf
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{old('name')}}">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{old('email')}}">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="extraFieldCheck" name="extra" @if (old('extra'))checked="checked" @endif>
+                            <label class="form-check-label" for="extra">Want to edit extra feilds?</label>
+                        </div>
+                        <div class="extra-fields @if (!old('extra')) hidden @endif">
+                            <div class="form-row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="job_title" name="job_title" placeholder="Job Title" value="{{old('job_title')}}">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone/Mobile" value="{{old('phone')}}">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="number" class="form-control" id="landline" name="landline" placeholder="Landline" value="{{old('landline')}}">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="number" class="form-control" id="fax" name="fax" placeholder="Fax" value="{{old('fax')}}">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="city" name="city" placeholder="City" value="{{old('city')}}">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="postcode" name="postcode" placeholder="Pincode/PostCode" value="{{old('postcode')}}">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <select class="custom-select form-control" name="state_code">
+                                        @if (!old('country'))
+                                            <option value="" selected>Select State</option>
+                                        @endif
+                                        @foreach ($states as $state)
+                                            @if ($state->code === old('state'))
+                                                <option value="{{$state->code}}" selected>{{$state->name}}</option>
+                                            @endif
+                                                <option value="{{$state->code}}">{{$state->name}}</option>
+                                        @endforeach
+                                      </select>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <select class="custom-select form-control" name="country_code">
+                                        @if (!old('country'))
+                                            <option value="" selected>Select Country</option>
+                                        @endif
+                                        @foreach ($countries as $country)
+                                            @if ($country->code === old('country'))
+                                                <option value="{{$country->code}}" selected>{{$country->name}}</option>
+                                            @endif
+                                                <option value="{{$country->code}}">{{$country->name}}</option>
+                                        @endforeach
+                                      </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="address" rows="3" placeholder="Add Address.." class="form-control">{{old('address')}}</textarea>
+                            </div>
+                            <div class="form-group">
+
+                            </div>
+                            <div class="form-group">
+
+                            </div>
+
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create Contact</button>
                     </form>
                 </div>
             </div>
         </div>
         <div class="col-sm-5">
             <div class="card">
-                <table class="table table-responsives table-hover">
+                <table class="table table-responsive table-striped table-hover @if(!$contacts->count()) blank @endIf">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-center" width="5%">#</th>
-                            <th scope="col" width="25%">Name</th>
-                            <th scope="col" width="25%">Email</th>
-                            <th scope="col" width="10%">Phone</th>
-                            <th scope="col" class="text-center" width="20%">Action</th>
+                            <th scope="col" class="text-center" width="">#</th>
+                            <th scope="col" width="">Name</th>
+                            <th scope="col" width="">Email</th>
+                            <th scope="col" width="">Job Title</th>
+                            <th scope="col" width="">Phone</th>
+                            <th scope="col" width="">Landline</th>
+                            <th scope="col" width="">Fax</th>
+                            <th scope="col" width="">City</th>
+                            <th scope="col" width="">Postcode</th>
+                            <th scope="col" width="">State</th>
+                            <th scope="col" width="">Country</th>
+                            <th scope="col" class="text-center" width="">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,7 +129,14 @@
                                     <td class="text-center">{{$loop->index+1}}</td>
                                     <td>{{$contact->name}}</td>
                                     <td>{{$contact->email}}</td>
-                                    <td>{{$contact->phone}}</td>
+                                    <td>{{$contact->job_title ?? ''}}</td>
+                                    <td>{{$contact->phone ?? ''}}</td>
+                                    <td>{{$contact->landline ?? ''}}</td>
+                                    <td>{{$contact->fax ?? ''}}</td>
+                                    <td>{{$contact->city ?? ''}}</td>
+                                    <td>{{$contact->postcode ?? ''}}</td>
+                                    <td>{{$contact->state->name ?? ''}}</td>
+                                    <td>{{$contact->country->name ?? ''}}</td>
                                     <td>
                                         <div class="d-flex justify-content-around align-items-center">
                                             <div class="delete">
@@ -78,7 +152,7 @@
                                 </tr>
                             @endforeach
                         @else
-                        <td colspan="5" class="text-center">No Contacts Found</td>
+                        <td colspan="12" class="text-center">No Contacts Found</td>
                         @endif
                     </tbody>
                 </table>
