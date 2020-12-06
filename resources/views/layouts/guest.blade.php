@@ -23,7 +23,7 @@
     <link href="{{ asset('css/main.css?v=').time() }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app" class="app-dark">
+    <div id="app" class="app-dark app">
         <nav class="navbar navbar-expand-md navbar-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

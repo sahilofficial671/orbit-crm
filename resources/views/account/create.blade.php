@@ -8,7 +8,7 @@
             @alertError
             @alertInfo
             <div class="card">
-                <div class="card-header">{{ __('Company Details') }}</div>
+                <div class="card-header">Add your company details</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('account.submit') }}">

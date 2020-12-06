@@ -30,11 +30,8 @@ class BladeServiceProvider extends ServiceProvider
             $message .='<?php if(session(\'success\')){ ?>';
             $message .= '<div class="row" style="height: 81px">
                         <div class="col-sm-12">
-                            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                            <div class="alert alert-success mt-3" role="alert">
                                 {{session(\'success\')}}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
                                 </div>
                             </div>
                         </div>';
@@ -46,12 +43,8 @@ class BladeServiceProvider extends ServiceProvider
             $message .='<?php if(session(\'error\')){ ?>';
             $message .= '<div class="row" style="height: 81px">
             <div class="col-sm-12">
-                <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                <div class="alert alert-danger mt-3" role="alert">
                     {{session(\'error\')}}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
                 </div>
             </div>';
             $message .='<?php } ?>';
@@ -62,11 +55,8 @@ class BladeServiceProvider extends ServiceProvider
             $message .='<?php if(session(\'info\')){ ?>';
             $message .= '<div class="row" style="height: 81px">
             <div class="col-sm-12">
-                <div class="alert alert-info alert-dismissible fade show mt-3" role="alert">
+                <div class="alert alert-info mt-3" role="alert">
                     {{session(\'info\')}}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                 </div>
             </div>';

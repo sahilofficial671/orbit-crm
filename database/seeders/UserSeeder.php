@@ -26,10 +26,10 @@ class UserSeeder extends Seeder
             'updated_at'=>Carbon::now(),
         ]);
         User::create([
-            'name'=>'Sahil Bhatia',
-            'email'=>'test@test.com',
+            'name'=>'Demo Account',
+            'email'=>'demo@demo.com',
             'email_verified_at'=>Carbon::now(),
-            'password'=>Hash::make('sahil1234'),
+            'password'=>Hash::make('demo'),
             'role_id'=>'1',
             'status'=>'1',
             'created_at'=>Carbon::now(),

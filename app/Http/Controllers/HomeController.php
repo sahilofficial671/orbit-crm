@@ -15,6 +15,6 @@ class HomeController extends Controller
 
     public function dashboard(Request $request)
     {
-        return view('dashboard')->with('account', InstanceHelper::getAccount());
+        return view('dashboard')->with(['account' => InstanceHelper::getAccount()]);
     }
 }

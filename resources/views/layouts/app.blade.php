@@ -24,7 +24,7 @@
 
 </head>
 <body class="app-dark">
-    <div id="app" class="{{$class ?? ''}}">
+    <div id="app" class="{{$class ?? ''}} app">
         {{-- @include('components.header') --}}
         <div class="app-container wrapper">
             <div class="sidebar">

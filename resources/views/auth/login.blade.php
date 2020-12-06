@@ -76,6 +76,11 @@
                     </form>
                 </div>
             </div>
+            <div class="alert alert-info my-4">
+                <div><h4>Note:</strong> </h4>
+                <strong>Email:</strong> demo@demo.com<br />
+                <strong>Password:</strong> demo
+            </div>
         </div>
     </div>
 </div>

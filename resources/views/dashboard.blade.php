@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    {{-- <a href="#" class="link">+ Add New Contact</a> --}}
+                    <a href="{{route('contact.index', ['account' => Session::get('account')->id])}}" class="link">+ Add New Contact</a>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    {{-- <a href="#" class="link">+ Add New Company</a> --}}
+                    <a href="{{route('company.index', ['account' => Session::get('account')->id])}}" class="link">+ Add New Company</a>
                 </div>
             </div>
         </div>

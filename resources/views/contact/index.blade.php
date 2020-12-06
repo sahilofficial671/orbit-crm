@@ -103,7 +103,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-6">
             <div class="card">
                 <table class="table table-responsive table-striped table-hover @if(!$contacts->count()) blank @endIf">
                     <thead>

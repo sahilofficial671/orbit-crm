@@ -4,6 +4,7 @@
     --dark-alternate-bg-color:#7798f6;
     --dark-third-bg-color: rgb(57 66 93 / 38%);
     --dark-default-text-color:rgb(255 255 255 / 90%);
+    --dark-success-color:#09ca09;
     --dark-heading-color:#1d2743;
     --dark-primary-text-color:#bebebe;
     --dark-default-border-color: rgb(243 243 243 / 29%);
@@ -16,7 +17,7 @@
     height: 100vh;
 }
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
-    font-weight: 100;
+    font-weight: 300;
 }
 .app-dark{
     background: var(--dark-secondary-bg-color);
@@ -26,11 +27,12 @@
 body{
     font-weight: 300;
 }
-#app{
+.app{
     font-weight: 300;
     height: 100%;
     position: fixed;
     width: 100%;
+    overflow: auto;
 }
 .app-dark .sidebar{
     background: var(--dark-primary-bg-color);
@@ -130,6 +132,20 @@ body{
 .app-dark .dropdown-item:focus, .app-dark .dropdown-item:hover{
     color: var(--dark-default-text-color);
     text-decoration: none;
+    background-color: var(--dark-primary-bg-color);
+}
+.app-dark .alert{
+    color:var(--dark-default-text-color);
+    font-weight: 300;
+    border-left:5px solid var(--dark-default-border-color);
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+}
+.app-dark .alert.alert-success{
+    color:var(--dark-success-color);
+}
+.app-dark .alert{
     background-color: var(--dark-primary-bg-color);
 }
 .table{
@@ -248,6 +264,7 @@ body{
     position: fixed;
     height: 100%;
     z-index: 1;
+    overflow: auto;
 }
 .title-container.main:before{
     content: '';
@@ -258,39 +275,22 @@ body{
     left: -5px;
 }
 
-.table::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
-    background-color: var(--dark-primary-bg-color)
-
-}
-
-.table::-webkit-scrollbar {
-    width: 5px;
-    background-color: #F5F5F5;
-}
-
-.table::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: var(--dark-alternate-bg-color);
-    height:5px;
-}
-
-.table::-webkit-scrollbar-button, main::-webkit-scrollbar-button{
+.table::-webkit-scrollbar-button, main::-webkit-scrollbar-button, .sidebar::-webkit-scrollbar-thumb{
     color:#000;
     background-color: var(--dark-alternate-bg-color);
 }
-main::-webkit-scrollbar-track {
+main::-webkit-scrollbar-track, .app::-webkit-scrollbar-track, .sidebar::-webkit-scrollbar-track, .table::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
     background-color: var(--dark-primary-bg-color)
 
 }
 
-main::-webkit-scrollbar {
+main::-webkit-scrollbar, .app::-webkit-scrollbar, .sidebar::-webkit-scrollbar, .table::-webkit-scrollbar {
     width: 10px;
     background-color: #F5F5F5;
 }
 
-main::-webkit-scrollbar-thumb {
+main::-webkit-scrollbar-thumb, .app::-webkit-scrollbar-thumb, .sidebar::-webkit-scrollbar-thumb, .table::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: var(--dark-alternate-bg-color);
 }
