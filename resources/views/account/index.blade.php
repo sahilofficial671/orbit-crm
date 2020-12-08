@@ -29,7 +29,7 @@
                             <td class="text-center">1</td>
                             <td>{{$account->name}}</td>
                             <td>{{$account->domain}}</td>
-                            <td>{{$account->companies->count()}}</td>
+                            <td>{{$account->contacts->count()}}</td>
                             <td>
                                 <div class="d-flex justify-content-around align-items-center">
                                     <div class="delete">

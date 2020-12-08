@@ -7,17 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\User;
 use Auth;
-use App\Traits\CommonTraits;
 use App\Helpers\InstanceHelper;
+
 class CompanyController extends Controller
 {
-    use CommonTraits;
 
     public function index(Request $request)
     {
-        $companies = InstanceHelper::getAccountCompanies();
-
-        return view('company.index')->with('companies', $companies);
+        return view('company.index')->with('companies', InstanceHelper::getAccountCompanies());
     }
     public function create($accountId, Request $request)
     {
@@ -48,7 +45,6 @@ class CompanyController extends Controller
             Company::find($companyId)->delete();
             return back()->with('success', 'Company Deleted Successfully!');
         }
-
         return back()->with('error', 'Company Not Found!');
     }
 }

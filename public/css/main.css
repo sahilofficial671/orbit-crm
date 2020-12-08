@@ -468,6 +468,9 @@ td .delete{
     position: relative;
     overflow: auto;
 }
+.form-control{
+    min-height: 40px;
+}
 .form-control option{
     letter-spacing: 0.5px;
 }

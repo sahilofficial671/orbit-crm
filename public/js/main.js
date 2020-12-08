@@ -51,4 +51,4 @@ $(document).ready(function() {
             extra_fields.addClass('hidden');
         });
     });
-});
+}); //Document Ready

@@ -12,7 +12,6 @@ class ContactController extends Controller
 
     public function index($accountId, Request $request)
     {
-        // dd(InstanceHelper::getAccountContacts());
         return view('contact.index')->with(
             [
                 'contacts' => InstanceHelper::getAccountContacts(),
@@ -22,7 +21,6 @@ class ContactController extends Controller
     }
     public function create($accountId, Request $request)
     {
-        // dd($request->all());
         $validatedData = $request->validate(
             [
                 'name' => 'required|max:50',
@@ -72,7 +70,6 @@ class ContactController extends Controller
             Contact::find($contactId)->delete();
             return back()->with('success', 'Contact Deleted Successfully!');
         }
-
         return back()->with('error', 'Contact Not Found!');
     }
 }
