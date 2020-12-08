@@ -11,13 +11,6 @@
     @alertSuccess
     @alertError
     @alertInfo
-    {{-- <div class="row">
-        <div class="col-sm-12">
-            @if (Session::has('account'))
-                <div class="">Account Selected: {{Session::get('account')->name}}</div>
-            @endif
-        </div>
-    </div> --}}
     <div class="row">
         <div class="col-sm-3">
             <div class="card card-stats">

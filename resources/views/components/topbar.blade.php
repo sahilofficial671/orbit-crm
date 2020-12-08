@@ -12,16 +12,27 @@
         <ul class="topbar-btns">
             <li>
                 <div class="dropdown user">
-                    <div class="dropdown-toggle" type="button" id="profileDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown-toggle dropdown-button" type="button" id="sideProfileSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @if (Auth::user()->image)
                         <img src="{{Auth::user()->image}}" alt="">
                         @else
                             <span class="ti-user"></span>
                         @endif
                     </div>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropDown">
-                        <a href="#" class="dropdown-item">Working on this right now!</a>
-                        <a href="{{ route('logout') }}" class="dropdown-item d-flex" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sideProfileSettings">
+                        <a href="{{route('user.profile.index')}}" class="dropdown-item">
+                            <div class="icon">
+                                <span class="ti-user"></span>
+                            </div>
+                            <div class="label">Edit Profile</div>
+                        </a>
+                        <a href="{{route('user.password.index')}}" class="dropdown-item">
+                            <div class="icon">
+                                <span class="ti-lock"></span>
+                            </div>
+                            <div class="label"> Change Password </div>
+                        </a>
+                        <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <div class="icon">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle" fill="#fff" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -34,11 +45,11 @@
                             </form>
                         </a>
                     </div>
-                </div>
+                </div> {{-- closed dropdown --}}
             </li>
             <li>
                 <div class="dropdown d-block d-sm-none">
-                    <div id="sidebarToggle">
+                    <div id="sidebarToggle" class="dropdown-button">
                         <span class="ti-layout-grid2"></span>
                     </div>
                 </div>

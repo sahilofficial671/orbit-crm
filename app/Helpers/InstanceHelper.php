@@ -11,10 +11,8 @@ use App\Models\Country;
 use Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
-use App\Traits\CommonTraits;
-class InstanceHelper{
 
-    use CommonTraits;
+class InstanceHelper{
 
     public static function getAccountCompanies(Int $accountId = NULL)
     {
@@ -35,16 +33,16 @@ class InstanceHelper{
     public static function getAccount(Int $userId = NULL)
     {
         if($userId){
-            return Account::where('created_by', $userId)->with(['companies', 'user', 'contacts'])->first();
+            return Account::where('created_by', $userId)->with(['companies', 'user', 'contacts'])->firstOrFail();
         }
-        return Account::where('created_by', Auth::id())->with(['companies', 'user', 'contacts'])->first();
+        return Account::where('created_by', Auth::id())->with(['companies', 'user', 'contacts'])->firstOrFail();
     }
     public static function getAccounts(Int $userId = NULL)
     {
         if($userId){
-            return Account::where('created_by', $userId)->with(['companies', 'user', 'contacts'])->first();
+            return Account::where('created_by', $userId)->with(['companies', 'user', 'contacts'])->firstOrFail();
         }
-        return Account::where('created_by', Auth::id())->with(['companies', 'user', 'contacts'])->first();
+        return Account::where('created_by', Auth::id())->with(['companies', 'user', 'contacts'])->firstOrFail();
     }
     public static function getStates()
     {
@@ -53,6 +51,13 @@ class InstanceHelper{
     public static function getCountries()
     {
         return Country::where('status', '1')->orderBy('name', 'asc')->get();
+    }
+    public static function getUser(Int $userId = NULL)
+    {
+        if($userId){
+            return User::where('id', $userId)->with(['role', 'accounts'])->firstOrFail();
+        }
+        return User::where('id', Auth::id())->with(['role', 'accounts'])->firstOrFail();
     }
 }
 

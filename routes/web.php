@@ -37,6 +37,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/p/{account?}/contact/create', 'ContactController@create')->name('contact.create');
             Route::get('/p/{account?}/contact/delete', 'ContactController@delete')->name('contact.delete');
         });
+
+        // User
+        Route::GET('/user/profile', 'UserController@showProfileForm')->name('user.profile.index');
+        Route::POST('/user/profile/edit', 'UserController@editProfile')->name('user.profile.edit');
+        Route::GET('/user/password', 'UserController@showPasswordForm')->name('user.password.index');
+        Route::POST('/user/password/edit', 'UserController@editPassword')->name('user.password.edit');
     });
 
     Route::get('/account/create', 'AccountController@showCreateForm')->middleware('account.oneonly')->name('account.create');

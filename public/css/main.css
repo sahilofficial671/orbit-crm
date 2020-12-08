@@ -1,10 +1,12 @@
 :root{
     --dark-primary-bg-color:#1d2743;
     --dark-secondary-bg-color:#080b13;
+    --dark-primary-hover-bg-color:#1f2638;
     --dark-alternate-bg-color:#7798f6;
     --dark-third-bg-color: rgb(57 66 93 / 38%);
     --dark-default-text-color:rgb(255 255 255 / 90%);
     --dark-success-color:#09ca09;
+    --dark-danger-color:#ff5564;
     --dark-heading-color:#1d2743;
     --dark-primary-text-color:#bebebe;
     --dark-default-border-color: rgb(243 243 243 / 29%);
@@ -83,6 +85,9 @@ body{
 .app-dark .card .card-footer, .app-dark .card .card-header{
     border-color: var(--dark-default-border-color);
 }
+.app-dark .card .card-footer:hover{
+  background-color: var(--dark-primary-hover-bg-color);
+}
 .app-dark .sidebar .brand, .app-dark .topbar .brand{
     color: var(--dark-default-text-color);
     background: var(--dark-alternate-bg-color);
@@ -150,9 +155,19 @@ body{
     border-right-width: 0px;
     border-top-width: 0px;
     border-bottom-width: 0px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+.app-dark .card .alert{
+    border: 1px solid var(--dark-default-border-color);
+    border-left-width: 5px;
+    background: var(--dark-primary-hover-bg-color);
 }
 .app-dark .alert.alert-success{
-    color:var(--dark-success-color);
+    color: var(--dark-success-color);
+}
+.app-dark .alert.alert-danger{
+    color: var(--dark-danger-color);
 }
 .app-dark .alert{
     background-color: var(--dark-primary-bg-color);
@@ -280,12 +295,10 @@ body{
 }
 .app .sidebar-close-button .button{
     position: fixed;
-    right: 17px;
-    position: fixed;
     right: 0px;
     top: 0px;
     background: var(--dark-alternate-bg-color);
-    width: 73px;
+    width: 70px;
     height: 54px;
     display: flex;
     align-items: center;
@@ -383,9 +396,10 @@ main::-webkit-scrollbar-thumb, .app::-webkit-scrollbar-thumb, .sidebar::-webkit-
     -webkit-box-direction: reverse;
     flex-direction: row-reverse;
 }
-.topbar-btns .dropdown{
-    flex-shrink: 0;
-    margin-left:10px;
+
+.topbar-btns .dropdown.user .dropdown-item{
+    display:flex;
+    align-items: center;
 }
 .topbar-btns .topbar-btn{
     font-size: 1.125rem;
@@ -393,11 +407,9 @@ main::-webkit-scrollbar-thumb, .app::-webkit-scrollbar-thumb, .sidebar::-webkit-
     color: rgba(77,82,89,0.4);
 }
 
-.dropdown .topbar-btn{
+.dropdown .dropdown-button{
     display: inline-block;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 64px;
+    line-height: var(--default-top-bar-height);
     padding: 0 12px;
     text-align: center;
     color: var(--dark-default-text-color);
@@ -405,11 +417,13 @@ main::-webkit-scrollbar-thumb, .app::-webkit-scrollbar-thumb, .sidebar::-webkit-
     min-width: 48px;
     white-space: nowrap;
     border: none;
-    border-top: 1px solid transparent;
     -webkit-transition: .2s linear;
     transition: .2s linear;
     position: relative;
-    z-index: 991;
+    z-index: 989;
+}
+.dropdown .dropdown-toggle:hover{
+    background-color: var(--dark-third-bg-color);
 }
 .topbar .topbar-cols{
     display: flex;
