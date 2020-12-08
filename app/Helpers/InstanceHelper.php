@@ -30,12 +30,12 @@ class InstanceHelper{
         return Contact::where('account_id', Account::getAccount()->id)->with(['company', 'user', 'account', 'state', 'country'])->get();
     }
 
-    public static function getAccount(Int $userId = NULL)
+    public static function getAccount(Int $accountId = NULL)
     {
-        if($userId){
-            return Account::where('created_by', $userId)->with(['companies', 'user', 'contacts'])->firstOrFail();
+        if($accountId){
+            return Account::where('id', $accountId)->with(['companies', 'user', 'contacts'])->first();
         }
-        return Account::where('created_by', Auth::id())->with(['companies', 'user', 'contacts'])->firstOrFail();
+        return Account::where('created_by', Auth::id())->with(['companies', 'user', 'contacts'])->first();
     }
     public static function getAccounts(Int $userId = NULL)
     {

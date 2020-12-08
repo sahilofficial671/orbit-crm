@@ -90,13 +90,6 @@
                             <div class="form-group">
                                 <textarea name="address" rows="3" placeholder="Add Address.." class="form-control">{{old('address')}}</textarea>
                             </div>
-                            <div class="form-group">
-
-                            </div>
-                            <div class="form-group">
-
-                            </div>
-
                         </div>
                         <button type="submit" class="btn btn-primary">Create Contact</button>
                     </form>
@@ -108,18 +101,19 @@
                 <table class="table table-responsive table-striped table-hover @if(!$contacts->count()) blank @endIf">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-center" width="">#</th>
-                            <th scope="col" width="">Name</th>
-                            <th scope="col" width="">Email</th>
-                            <th scope="col" width="">Job Title</th>
-                            <th scope="col" width="">Phone</th>
-                            <th scope="col" width="">Landline</th>
-                            <th scope="col" width="">Fax</th>
-                            <th scope="col" width="">City</th>
-                            <th scope="col" width="">Postcode</th>
-                            <th scope="col" width="">State</th>
-                            <th scope="col" width="">Country</th>
-                            <th scope="col" class="text-center" width="">Action</th>
+                            <th scope="col" class="text-center">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Job Title</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Landline</th>
+                            <th scope="col">Fax</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Postcode</th>
+                            <th scope="col">State</th>
+                            <th scope="col">Country</th>
+                            <th scope="col" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -133,6 +127,7 @@
                                     <td>{{$contact->phone ?? ''}}</td>
                                     <td>{{$contact->landline ?? ''}}</td>
                                     <td>{{$contact->fax ?? ''}}</td>
+                                    <td>{{$contact->address ?? ''}}</td>
                                     <td>{{$contact->city ?? ''}}</td>
                                     <td>{{$contact->postcode ?? ''}}</td>
                                     <td>{{$contact->state->name ?? ''}}</td>

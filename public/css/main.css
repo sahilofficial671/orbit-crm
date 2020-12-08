@@ -106,9 +106,6 @@ body{
     border: 1px solid var(--dark-default-border-color);
     background-color: var(--dark-secondary-bg-color);
     color:var(--dark-default-text-color);
-    font-weight:300;
-    font-size: 14px;
-    letter-spacing: 1px;
 }
 .app-dark .dropdown-menu{
     background: var(--dark-secondary-bg-color);
@@ -483,7 +480,10 @@ td .delete{
     overflow: auto;
 }
 .form-control{
-    min-height: 40px;
+    min-height: 42px;
+    font-weight:300;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 .form-control option{
     letter-spacing: 0.5px;

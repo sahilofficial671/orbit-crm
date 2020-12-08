@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\InstanceHelper;
 use App\Models\Account;
-use Auth;
+use Auth, Session;
 class AccountController extends Controller
 {
     public function index()
@@ -16,21 +16,19 @@ class AccountController extends Controller
     public function delete(Request $request)
     {
         $accountId = $request->account;
-
-        if (InstanceHelper::getAccounts()->contains('id', $accountId)) {
-            if(InstanceHelper::getAccountCompanies($accountId)){
-                return redirect()->route('account.index')->with('error', "Account have companies so it can't be deleted!");
+        if (InstanceHelper::getUser()->accounts->contains($accountId)) {
+            if(InstanceHelper::getAccount($accountId)->contacts->count()){
+                return redirect()->route('account.index')->with('error', "Account have contacts so it can't be deleted!");
             }
-
-            Account::find($accountId)->delete();
-
-            return back()->with('success', 'Company Deleted Successfully!');
+            Account::destroy($accountId);
+            $request->session()->forget('account');
+            $request->session()->put('success', 'Account Deleted!');
+            return back();
         }
-
         return back()->with('error', 'Account Not Found!');
     }
 
-    public function showCreateForm()
+    public function showCreateForm(Request $request)
     {
         return view('account.create');
     }

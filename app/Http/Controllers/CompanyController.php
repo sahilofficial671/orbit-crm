@@ -14,7 +14,12 @@ class CompanyController extends Controller
 
     public function index(Request $request)
     {
-        return view('company.index')->with('companies', InstanceHelper::getAccountCompanies());
+        return view('company.index')->with(
+            [
+                'companies' => InstanceHelper::getAccountCompanies(),
+                'states' => InstanceHelper::getStates(),
+                'countries' => InstanceHelper::getCountries(),
+            ]);
     }
     public function create($accountId, Request $request)
     {

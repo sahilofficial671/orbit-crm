@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use App\Helpers\InstanceHelper;
 use App\Models\Account;
-use Session;
+
 class CreateAccountFirst
 {
     /**
@@ -19,7 +19,7 @@ class CreateAccountFirst
     public function handle(Request $request, Closure $next)
     {
         if(InstanceHelper::getAccount()){
-            Session::put('account', InstanceHelper::getAccount());
+            $request->session()->put('account', InstanceHelper::getAccount());
             return $next($request);
         }
 

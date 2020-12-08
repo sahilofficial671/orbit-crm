@@ -28,10 +28,10 @@ class BladeServiceProvider extends ServiceProvider
         Blade::directive('alertSuccess', function () {
             $message = '';
             $message .='<?php if(session(\'success\')){ ?>';
-            $message .= '<div class="row" style="height: 81px">
-                        <div class="col-sm-12">
-                            <div class="alert alert-success mt-3" role="alert">
-                                {{session(\'success\')}}
+            $message .= '<div class="row">
+                            <div class="col-sm-12">
+                                <div class="alert alert-success mt-3" role="alert">
+                                    {{session(\'success\')}}
                                 </div>
                             </div>
                         </div>';
@@ -41,25 +41,26 @@ class BladeServiceProvider extends ServiceProvider
         Blade::directive('alertError', function () {
             $message = '';
             $message .='<?php if(session(\'error\')){ ?>';
-            $message .= '<div class="row" style="height: 81px">
-            <div class="col-sm-12">
-                <div class="alert alert-danger mt-3" role="alert">
-                    {{session(\'error\')}}
-                </div>
-            </div>';
+            $message .= '<div class="row">
+                            <div class="col-sm-12">
+                                <div class="alert alert-danger mt-3" role="alert">
+                                    {{session(\'error\')}}
+                                </div>
+                            </div>
+                        </div>';
             $message .='<?php } ?>';
             return $message;
         });
         Blade::directive('alertInfo', function () {
             $message = '';
             $message .='<?php if(session(\'info\')){ ?>';
-            $message .= '<div class="row" style="height: 81px">
-            <div class="col-sm-12">
-                <div class="alert alert-info mt-3" role="alert">
-                    {{session(\'info\')}}
-                    </div>
-                </div>
-            </div>';
+            $message .= '<div class="row">
+                            <div class="col-sm-12">
+                                <div class="alert alert-danger mt-3" role="alert">
+                                    {{session(\'info\')}}
+                                </div>
+                            </div>
+                        </div>';
             $message .='<?php } ?>';
             return $message;
         });
