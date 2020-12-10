@@ -51,4 +51,17 @@ $(document).ready(function() {
             extra_fields.addClass('hidden');
         });
     });
+
+    //Add loader to all form submit button on click
+    $('form').on('submit', function(){
+        var form = $(this);
+        var button = form.find('[type=submit]');
+        if(form.hasClass('submitted')){
+            e.preventDefault();
+            return false;
+        }
+        form.addClass('submitted');
+        button.html('<i class="fa fa-spinner fa-spin"></i>');
+    });
+
 }); //Document Ready
