@@ -536,9 +536,9 @@ td .delete{
 }
 .profile .edit-icon{
     position: relative;
-    left: -105px;
+    left: -13px;
     z-index: 989;
-    bottom: -36px;
+    top: -24px;
     background: var(--dark-primary-bg-color);
     color: var(--dark-default-text-color);
     padding: 1px 4px;
