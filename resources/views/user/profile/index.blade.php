@@ -32,19 +32,19 @@
                                         <div class="form-group d-inline-block">
                                             <input type="file" name="avatar" id="image">
                                         </div>
-                                        <div class="edit-icon d-inline-block rounded">
-                                            <span class="ti-pencil icon"></span> Edit
-                                        </div>
+                                    </div>
+                                    <div class="edit-icon d-inline-block rounded">
+                                        <span class="ti-pencil icon"></span> Edit
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                @error('image')
+                            @error('image')
+                                <div class="form-group">
                                     <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @endError
-                            </div>
+                                </div>
+                            @endError
                             <div class="form-group">
                                 <input type="text" class="form-control @error('name') is-invalid @endError" id="name" name="name" placeholder="Name" value="{{old('name') ?? $user->name}}">
 
