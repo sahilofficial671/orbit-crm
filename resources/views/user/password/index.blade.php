@@ -48,7 +48,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-group form-check">
+                            <div class="form-check">
                                 <input type="checkbox" class="form-check-input @error('logout_from_all_sessions') is-invalid @endError" id="logout_from_all_sessions" name="logout_from_all_sessions">
                                 <label for="logout_from_all_sessions">Logout from all sessions</label>
                             </div>

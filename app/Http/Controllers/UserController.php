@@ -7,6 +7,7 @@ use App\Helpers\InstanceHelper;
 use Hash, Auth;
 use App\Actions\Fortify\PasswordValidationRules;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -19,14 +20,22 @@ class UserController extends Controller
     public function editProfile(Request $request)
     {
         $request->validate([
-            'name' => 'required|numeric',
+            'name' => 'required|string',
             'email' => 'required|email',
-        ]);
+            'avatar' => 'image',
+        ], ['image' => 'Please select valid image file. (ex. .jpg, .png, jpeg)']);
 
         $user = InstanceHelper::getUser();
+
+        if ($request->hasFile('avatar')) {
+            Storage::delete($user->avatar);
+            $path = $request->avatar->store('images');
+            $user->avatar = $path;
+        }
+
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->save();
+        $user->update();
 
         return back()->with('success', 'Profile Updated.');
     }

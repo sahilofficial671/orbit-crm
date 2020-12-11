@@ -13,8 +13,8 @@
             <li>
                 <div class="dropdown user">
                     <div class="dropdown-toggle dropdown-button" type="button" id="sideProfileSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @if (Auth::user()->image)
-                        <img src="{{Auth::user()->image}}" alt="">
+                        @if (Auth::user()->avatar)
+                            <img src="{{asset('storage/'.Auth::user()->avatar)}}" class="avatar rounded-circle">
                         @else
                             <span class="ti-user"></span>
                         @endif

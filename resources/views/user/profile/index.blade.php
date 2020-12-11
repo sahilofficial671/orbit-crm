@@ -1,4 +1,4 @@
-@extends('layouts.app', ['class'=>'contacts'])
+@extends('layouts.app', ['class'=>'profile'])
 
 @section('content')
     <div class="container-fluid">
@@ -19,8 +19,32 @@
                         Edit Profile
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('user.profile.edit') }}">
+                        <form method="POST" action="{{ route('user.profile.edit') }}" enctype="multipart/form-data">
                             @csrf
+                            <div class="form-row">
+                                <div class="mb-4 col-3 offset-5">
+                                    <div class="avatar d-inline-block">
+                                        @if ($user->avatar)
+                                            <img src="{{asset('storage/'.$user->avatar)}}" class="rounded-circle">
+                                        @else
+                                            <img src="https://ui-avatars.com/api/?size=90&name={{$user->name}}" class="rounded-circle">
+                                        @endif
+                                        <div class="form-group d-inline-block">
+                                            <input type="file" name="avatar" id="image">
+                                        </div>
+                                        <div class="edit-icon d-inline-block rounded">
+                                            <span class="ti-pencil icon"></span> Edit
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @error('image')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @endError
+                            </div>
                             <div class="form-group">
                                 <input type="text" class="form-control @error('name') is-invalid @endError" id="name" name="name" placeholder="Name" value="{{old('name') ?? $user->name}}">
 

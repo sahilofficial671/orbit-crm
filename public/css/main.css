@@ -357,7 +357,7 @@ main::-webkit-scrollbar-thumb, .app::-webkit-scrollbar-thumb, .sidebar::-webkit-
 
 .app-dark .topbar{
     background-color: var(--dark-primary-bg-color);
-    padding: 0 18px;
+    /* padding: 0 18px; */
     height:var(--default-top-bar-height);
     display: -webkit-box;
     display: flex;
@@ -418,9 +418,10 @@ main::-webkit-scrollbar-thumb, .app::-webkit-scrollbar-thumb, .sidebar::-webkit-
     transition: .2s linear;
     position: relative;
     z-index: 989;
+    background-color: var(--dark-third-bg-color);
 }
 .dropdown .dropdown-toggle:hover{
-    background-color: var(--dark-third-bg-color);
+    background-color: var(--dark-primary-hover-bg-color);
 }
 .topbar .topbar-cols{
     display: flex;
@@ -500,11 +501,53 @@ td .delete{
 }
 .topbar .topbar-left .brand{
     position: relative;
-    left: -19px;
+    padding-left: 10px;
 }
 .topbar .topbar-left .brand .icon{
     position: relative;
     top: -2px;
+}
+.topbar .dropdown{
+    z-index: 1;
+}
+.topbar .dropdown .dropdown-button .avatar{
+    width: 40px;
+    height: 40px;
+}
+.topbar .dropdown .dropdown-toggle:after{
+    display: none;
+}
+.profile .avatar img{
+    z-index: 989;
+    position: relative;
+    height: 90px;
+    width: 90px;
+}
+.profile .avatar .form-group, .profile .avatar .form-group input{
+    height: 90px;
+    width: 106px;
+    cursor: pointer;
+}
+.profile .avatar .form-group{
+    opacity: 0;
+    position: absolute;
+    left: -6px;
+    z-index: 990;
+}
+.profile .edit-icon{
+    position: relative;
+    left: -105px;
+    z-index: 989;
+    bottom: -36px;
+    background: var(--dark-primary-bg-color);
+    color: var(--dark-default-text-color);
+    padding: 1px 4px;
+    font-size: 14px;
+    border: 1px solid var(--dark-default-border-color);
+}
+.profile .edit-icon .icon{
+    color: var(--dark-danger-color);
+    font-size: 13px;
 }
 
 @media (max-width:600px){
