@@ -147,7 +147,7 @@
                                 </tr>
                             @endforeach
                         @else
-                        <td colspan="12" class="text-center">No Contacts Found</td>
+                        <td colspan="13" class="text-center">No Contacts Found</td>
                         @endif
                     </tbody>
                 </table>

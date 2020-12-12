@@ -150,7 +150,7 @@
                                 </tr>
                             @endforeach
                         @else
-                        <td colspan="7" class="text-center">No Company Found</td>
+                        <td colspan="14" class="text-center">No Company Found</td>
                         @endif
                     </tbody>
                 </table>
