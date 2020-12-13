@@ -45,4 +45,12 @@ class Company extends Model
     {
         return $this->hasMany('App\Models\Contact', 'id', 'company_id');
     }
+    public function state()
+    {
+        return $this->hasOne('App\Models\State', 'code', 'state_code');
+    }
+    public function country()
+    {
+        return $this->hasOne('App\Models\Country', 'code', 'country_code');
+    }
 }

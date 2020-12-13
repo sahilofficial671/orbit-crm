@@ -374,6 +374,15 @@ main::-webkit-scrollbar-thumb, .app::-webkit-scrollbar-thumb, .sidebar::-webkit-
     -webkit-box-shadow: 4px 0 5px rgba(0,0,0,0.08);
     box-shadow: 4px 0 5px rgba(0,0,0,0.08);
 }
+.app .ti-trash{
+    color:var(--dark-danger-color);
+}
+.app .ti-trash:hover{
+    text-decoration: none;
+}
+.app .table .ti-pencil-alt{
+    color:var(--dark-success-color);
+}
 .topbar .topbar-right{
     display: -webkit-box;
     display: flex;

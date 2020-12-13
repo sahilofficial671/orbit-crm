@@ -42,7 +42,12 @@ class ContactController extends Controller
             ],
         );
 
-        $contact = new Contact();
+        if($request->contactId){
+            $contact = Contact::findOrFail($request->contactId);
+        }else{
+            $contact = new Contact();
+        }
+
         $contact->name = $request->name;
         $contact->email = $request->email;
         $contact->job_title = $request->job_title;
@@ -54,13 +59,32 @@ class ContactController extends Controller
         $contact->state_code = $request->state_code;
         $contact->country_code = $request->country_code ?? null;
         $contact->address = $request->address ?? null;
-
         $contact->account_id = $accountId;
         $contact->created_by = Auth::id();
         $contact->status = '1';
-        $contact->save();
 
-        return back()->with('success', 'Contact Added Successfully!');
+        $message = '';
+
+        if($request->contactId){
+            $message = 'Contact Edited Successfully!';
+            $contact->update();
+        }else{
+            $message = 'Contact Added Successfully!';
+            $contact->save();
+        }
+        return back()->with('success', $message);
+    }
+    public function edit($accountId, $contactId, Request $request)
+    {
+        $contact = Contact::where('id', $contactId)->with(['company', 'state', 'country'])->firstOrFail();
+        if($contact){
+            return view('contact.edit')->with(
+                [
+                    'contact' => $contact,
+                    'states' => InstanceHelper::getStates(),
+                    'countries' => InstanceHelper::getCountries(),
+                ]);
+        }
     }
     public function delete(Request $request)
     {

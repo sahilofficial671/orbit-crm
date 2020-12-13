@@ -42,7 +42,7 @@ class Contact extends Model
     }
     public function company()
     {
-        return $this->belongsTo('App\Models\Company', 'company_id', 'id');
+        return $this->hasOne('App\Models\Company', 'id', 'company_id');
     }
     public function user()
     {
