@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Providers;
+
 use Blade;
+use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Session;
-use Illuminate\Http\Request;
 
 class BladeServiceProvider extends ServiceProvider
 {
@@ -27,7 +28,7 @@ class BladeServiceProvider extends ServiceProvider
     {
         Blade::directive('alertSuccess', function () {
             $message = '';
-            $message .='<?php if(session(\'success\')){ ?>';
+            $message .= '<?php if(session(\'success\')){ ?>';
             $message .= '<div class="row">
                             <div class="col-sm-12">
                                 <div class="alert alert-success mt-3" role="alert">
@@ -35,12 +36,13 @@ class BladeServiceProvider extends ServiceProvider
                                 </div>
                             </div>
                         </div>';
-            $message .='<?php } ?>';
+            $message .= '<?php } ?>';
+
             return $message;
         });
         Blade::directive('alertError', function () {
             $message = '';
-            $message .='<?php if(session(\'error\')){ ?>';
+            $message .= '<?php if(session(\'error\')){ ?>';
             $message .= '<div class="row">
                             <div class="col-sm-12">
                                 <div class="alert alert-danger mt-3" role="alert">
@@ -48,12 +50,13 @@ class BladeServiceProvider extends ServiceProvider
                                 </div>
                             </div>
                         </div>';
-            $message .='<?php } ?>';
+            $message .= '<?php } ?>';
+
             return $message;
         });
         Blade::directive('alertInfo', function () {
             $message = '';
-            $message .='<?php if(session(\'info\')){ ?>';
+            $message .= '<?php if(session(\'info\')){ ?>';
             $message .= '<div class="row">
                             <div class="col-sm-12">
                                 <div class="alert alert-danger mt-3" role="alert">
@@ -61,7 +64,8 @@ class BladeServiceProvider extends ServiceProvider
                                 </div>
                             </div>
                         </div>';
-            $message .='<?php } ?>';
+            $message .= '<?php } ?>';
+
             return $message;
         });
     }

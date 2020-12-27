@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Helpers\InstanceHelper;
-use Hash, Auth;
 use App\Actions\Fortify\PasswordValidationRules;
-use Illuminate\Support\Facades\Validator;
+use App\Helpers\InstanceHelper;
+use Auth;
+use Hash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -17,6 +18,7 @@ class UserController extends Controller
     {
         return view('user.profile.index')->with('user', InstanceHelper::getUser());
     }
+
     public function editProfile(Request $request)
     {
         $request->validate([
@@ -39,18 +41,20 @@ class UserController extends Controller
 
         return back()->with('success', 'Profile Updated.');
     }
+
     public function showPasswordForm()
     {
         return view('user.password.index');
     }
+
     public function editPassword(Request $request)
     {
         $user = InstanceHelper::getUser();
 
         $validator = Validator::make($request->all(), [
-                        'current_password' => ['required', 'string'],
-                        'password' => $this->passwordRules(),
-                    ])->after(function ($validator) use ($user, $request) {
+            'current_password' => ['required', 'string'],
+            'password' => $this->passwordRules(),
+        ])->after(function ($validator) use ($user, $request) {
                         if (! Hash::check($request->current_password, $user->password)) {
                             $validator->errors()->add('current_password', __('The provided password does not match your current password.'));
                         }
@@ -64,10 +68,11 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ])->save();
 
-        if($request->logout_from_all_sessions){
+        if ($request->logout_from_all_sessions) {
             Auth::guard()->logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
+
             return redirect()->route('login')->with('success', 'Password Changed & Logged out of all sessions.');
         }
 
