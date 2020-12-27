@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\State;
+use Illuminate\Database\Seeder;
 
 class StateSeeder extends Seeder
 {
@@ -14,7 +14,7 @@ class StateSeeder extends Seeder
      */
     public function run()
     {
-        $states = array (
+        $states = [
             'AP' => 'Andhra Pradesh',
             'AR' => 'Arunachal Pradesh',
             'AS' => 'Assam',
@@ -50,7 +50,7 @@ class StateSeeder extends Seeder
             'DL' => 'Delhi',
             'LD' => 'Lakshadweep',
             'PY' => 'Puducherry',
-        );
+        ];
         foreach ($states as $key => $value) {
             State::create([
                 'code' => $key,

@@ -2,9 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Helpers\InstanceHelper;
 use Closure;
 use Illuminate\Http\Request;
-use App\Helpers\InstanceHelper;
+
 class OneAccountPerUserOnly
 {
     /**
@@ -16,8 +17,9 @@ class OneAccountPerUserOnly
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!InstanceHelper::getAccount()){
+        if (! InstanceHelper::getAccount()) {
             $request->session()->forget('account');
+
             return $next($request);
         }
 

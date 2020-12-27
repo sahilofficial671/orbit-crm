@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Helpers\InstanceHelper;
 use App\Models\Contact;
 use App\Models\State;
 use Auth;
-use App\Helpers\InstanceHelper;
+use Illuminate\Http\Request;
+
 class ContactController extends Controller
 {
-
     public function index($accountId, Request $request)
     {
         return view('contact.index')->with(
@@ -19,6 +19,7 @@ class ContactController extends Controller
                 'countries' => InstanceHelper::getCountries(),
             ]);
     }
+
     public function create($accountId, Request $request)
     {
         $validatedData = $request->validate(
@@ -42,9 +43,9 @@ class ContactController extends Controller
             ],
         );
 
-        if($request->contactId){
+        if ($request->contactId) {
             $contact = Contact::findOrFail($request->contactId);
-        }else{
+        } else {
             $contact = new Contact();
         }
 
@@ -65,19 +66,21 @@ class ContactController extends Controller
 
         $message = '';
 
-        if($request->contactId){
+        if ($request->contactId) {
             $message = 'Contact Edited Successfully!';
             $contact->update();
-        }else{
+        } else {
             $message = 'Contact Added Successfully!';
             $contact->save();
         }
+
         return back()->with('success', $message);
     }
+
     public function edit($accountId, $contactId, Request $request)
     {
         $contact = Contact::where('id', $contactId)->with(['company', 'state', 'country'])->firstOrFail();
-        if($contact){
+        if ($contact) {
             return view('contact.edit')->with(
                 [
                     'contact' => $contact,
@@ -86,14 +89,17 @@ class ContactController extends Controller
                 ]);
         }
     }
+
     public function delete(Request $request)
     {
         $contactId = $request->contact;
 
         if (InstanceHelper::getAccountContacts()->contains('id', $contactId)) {
             Contact::find($contactId)->delete();
+
             return back()->with('success', 'Contact Deleted Successfully!');
         }
+
         return back()->with('error', 'Contact Not Found!');
     }
 }

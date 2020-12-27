@@ -2,10 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Helpers\InstanceHelper;
 use Closure;
 use Illuminate\Http\Request;
 use Session;
-use App\Helpers\InstanceHelper;
+
 class MatchAccountWithSession
 {
     /**
@@ -17,8 +18,7 @@ class MatchAccountWithSession
      */
     public function handle(Request $request, Closure $next)
     {
-
-        if((int)$request->route('account') === Session::get('account')->id){
+        if ((int) $request->route('account') === Session::get('account')->id) {
             return $next($request);
         }
 

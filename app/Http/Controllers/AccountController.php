@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Helpers\InstanceHelper;
 use App\Models\Account;
-use Auth, Session;
+use Auth;
+use Illuminate\Http\Request;
+use Session;
+
 class AccountController extends Controller
 {
     public function index()
@@ -17,14 +19,16 @@ class AccountController extends Controller
     {
         $accountId = $request->account;
         if (InstanceHelper::getUser()->accounts->contains($accountId)) {
-            if(InstanceHelper::getAccount($accountId)->contacts->count()){
+            if (InstanceHelper::getAccount($accountId)->contacts->count()) {
                 return redirect()->route('account.index')->with('error', "Account have contacts so it can't be deleted!");
             }
             Account::destroy($accountId);
             $request->session()->forget('account');
             $request->session()->put('success', 'Account Deleted!');
+
             return back();
         }
+
         return back()->with('error', 'Account Not Found!');
     }
 
@@ -32,6 +36,7 @@ class AccountController extends Controller
     {
         return view('account.create');
     }
+
     public function submit(Request $request)
     {
         $validatedData = $request->validate([

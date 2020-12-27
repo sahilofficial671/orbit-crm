@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Contact extends Model
 {
     use HasFactory;
-     /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -40,18 +40,22 @@ class Contact extends Model
     {
         return $this->belongsTo('App\Models\Account', 'account_id', 'id');
     }
+
     public function company()
     {
         return $this->hasOne('App\Models\Company', 'id', 'company_id');
     }
+
     public function user()
     {
         return $this->belongsTo('App\Models\Company', 'created_by', 'id');
     }
+
     public function state()
     {
         return $this->hasOne('App\Models\State', 'code', 'state_code');
     }
+
     public function country()
     {
         return $this->hasOne('App\Models\Country', 'code', 'country_code');

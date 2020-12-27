@@ -45,10 +45,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Company', 'created_by');
     }
+
     public function role()
     {
         return $this->hasOne('App\Models\Role', 'id', 'role_id');
     }
+
     public function accounts()
     {
         return $this->hasMany('App\Models\Account', 'created_by');

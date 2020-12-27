@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
-use Illuminate\Http\Request;
 use App\Helpers\InstanceHelper;
 use App\Models\Account;
+use Closure;
+use Illuminate\Http\Request;
 
 class CreateAccountFirst
 {
@@ -18,8 +18,9 @@ class CreateAccountFirst
      */
     public function handle(Request $request, Closure $next)
     {
-        if(InstanceHelper::getAccount()){
+        if (InstanceHelper::getAccount()) {
             $request->session()->put('account', InstanceHelper::getAccount());
+
             return $next($request);
         }
 

@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\User;
 use Carbon\Carbon;
 use Hash;
+use Illuminate\Database\Seeder;
+
 class UserSeeder extends Seeder
 {
     /**

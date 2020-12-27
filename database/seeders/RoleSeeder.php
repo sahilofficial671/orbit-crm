@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use Carbon\Carbon;
 use App\Models\Role;
+use Carbon\Carbon;
+use Illuminate\Database\Seeder;
 
 class RoleSeeder extends Seeder
 {

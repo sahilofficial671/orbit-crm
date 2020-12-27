@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use App\Helpers\InstanceHelper;
 use App\Models\Company;
 use App\Models\User;
 use Auth;
-use App\Helpers\InstanceHelper;
+use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-
     public function index(Request $request)
     {
         return view('company.index')->with(
@@ -21,6 +19,7 @@ class CompanyController extends Controller
                 'countries' => InstanceHelper::getCountries(),
             ]);
     }
+
     public function create($accountId, Request $request)
     {
         $validatedData = $request->validate([
@@ -44,12 +43,14 @@ class CompanyController extends Controller
         $companyId = $request->company;
 
         if (InstanceHelper::getAuthCompanies()->contains('id', $companyId)) {
-            if(Company::find($companyId)->contacts->count()){
+            if (Company::find($companyId)->contacts->count()) {
                 return back()->with('error', "Company have contacts so it can't be deleted!");
             }
             Company::find($companyId)->delete();
+
             return back()->with('success', 'Company Deleted Successfully!');
         }
+
         return back()->with('error', 'Company Not Found!');
     }
 }

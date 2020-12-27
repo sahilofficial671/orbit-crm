@@ -20,7 +20,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     /* Check if account selected for session or not */
     Route::middleware(['account.first'])->group(function () {
-
         Route::GET('/accounts', 'AccountController@index')->name('account.index');
         Route::GET('/account/delete', 'AccountController@delete')->name('account.delete');
 
@@ -50,7 +49,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::GET('/account/create', 'AccountController@showCreateForm')->middleware('account.oneonly')->name('account.create');
     Route::POST('/account/submit', 'AccountController@submit')->middleware('account.oneonly')->name('account.submit');
 });
-
 
 //test Routes
 Route::GET('/test', 'TestController@test');
