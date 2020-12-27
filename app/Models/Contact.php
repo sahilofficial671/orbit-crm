@@ -40,6 +40,7 @@ class Contact extends Model
     {
         return $this->belongsTo('App\Models\Account', 'account_id', 'id');
     }
+
     public function company()
     {
         return $this->hasOne('App\Models\Company', 'id', 'company_id');
