@@ -9,11 +9,11 @@
             </div>
         </div>
     </div>
-    @alertSuccess
-    @alertError
-    @alertInfo
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
+            @alertSuccess
+            @alertError
+            @alertInfo
             <div class="card">
                 <div class="card-header">
                     Edit Contact
