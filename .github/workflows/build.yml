@@ -59,8 +59,8 @@ jobs:
     - name: Install Dependencies
       run: composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
 
-    # - name: Install NPM Dependencies
-    #   run: npm install
+    - name: Install NPM Dependencies
+      run: npm install
 
     - name: Generate key
       run: php artisan key:generate
@@ -68,15 +68,8 @@ jobs:
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
 
-    - name: Create Database
-      run: |
-        mkdir -p database
-        touch database/database.sqlite
-
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      run: |
-        php artisan migrate
-        ./vendor/bin/phpunit
+    - name: Create Database & Migrate
+      run: php artisan migrate
 
       env:
         DB_CONNECTION: mysql
@@ -84,6 +77,7 @@ jobs:
         DB_PORT: 33306
         DB_USER: root
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+
 
   sonarcloud:
     needs: Tests
