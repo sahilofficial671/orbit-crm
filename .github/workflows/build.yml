@@ -60,5 +60,4 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           script: |
             cd /var/www/orbit-crm/
-            git checkout -f
-            git pull
+            ls
