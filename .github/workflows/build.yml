@@ -8,7 +8,7 @@ on:
       - main
     types: [opened, synchronize, reopened]
 env:
-  php-version: '7.0'
+  php-version: '7.3'
   node-version: 15
 
 jobs:
