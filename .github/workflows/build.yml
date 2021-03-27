@@ -68,7 +68,7 @@ jobs:
 
   deploy:
     name: Deploy
-    needs: [sonarcloud, tests]
+    needs: [tests]
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
