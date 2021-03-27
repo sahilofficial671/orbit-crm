@@ -59,8 +59,8 @@ jobs:
     - name: Install Dependencies
       run: composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
 
-    - name: Install NPM Dependencies
-      run: npm install
+    # - name: Install NPM Dependencies
+    #   run: npm install
 
     - name: Generate key
       run: php artisan key:generate
@@ -76,10 +76,10 @@ jobs:
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: mysql
+        DB_DATABASE: db_test
         DB_PORT: 3306
         DB_USER: root
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        DB_DATABASE: database/database.sqlite
 
       run: |
         php artisan migrate
