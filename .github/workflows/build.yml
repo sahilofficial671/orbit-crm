@@ -7,37 +7,49 @@ on:
     branches:
       - main
     types: [opened, synchronize, reopened]
+env:
+  php-version: '7.0'
+  node-version: 15
+
 jobs:
-  # sonarcloud:
-  #   name: SonarCloud
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-  #     - name: SonarCloud Scan
-  #       uses: SonarSource/sonarcloud-github-action@master
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-  #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   tests:
-    runs-on: ubuntu-latest
-    name: Tests
     services:
       mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: test_db
-        ports:
-          - 3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+            image: mysql:5.7
+            env:
+              MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}
+              MYSQL_DATABASE: db_test
+            ports:
+              - 3360:3306
+            options: >-
+              --health-cmd="mysqladmin ping"
+              --health-interval=10s
+              --health-timeout=5s
+              --health-retries=3
+
+    runs-on: ubuntu-latest
+    name: Tests
 
     steps:
-    - uses: shivammathur/setup-php@b7d1d9c9a92d8d8463ce36d7f60da34d461724f8
+    - name: Checkout sources
+      uses: actions/checkout@v2
       with:
-        php-version: '7.3'
-    - uses: actions/checkout@v2
+        fetch-depth: 0
+
+    - name: Setup PHP ${{ env.php-version }}
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ env.php-version }}
+        extensions: mbstring, dom, fileinfo
+        coverage: none
+
+    - name: Check PHP Version
+      run: php -v
+    - name: Check Composer Version
+      run: composer -V
+    - name: Check PHP Extensions
+      run: php -m
+
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
@@ -60,11 +72,33 @@ jobs:
       run: |
         mkdir -p database
         touch database/database.sqlite
+
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
-        DB_CONNECTION: sqlite
+        DB_CONNECTION: mysql
+        DB_PORT: 3306
+        DB_USER: root
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         DB_DATABASE: database/database.sqlite
-      run: ./vendor/bin/phpunit
+
+      run: |
+        php artisan migrate
+        ./vendor/bin/phpunit
+
+  sonarcloud:
+    needs: Tests
+    if: ${{ ! startsWith(github.ref, 'dependabot/') }}
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   deploy:
     name: Deploy
