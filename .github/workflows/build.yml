@@ -20,7 +20,7 @@ jobs:
               MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}
               MYSQL_DATABASE: db_test
             ports:
-              - 3360:3306
+              - 33306:3306
             options: >-
               --health-cmd="mysqladmin ping"
               --health-interval=10s
@@ -74,16 +74,16 @@ jobs:
         touch database/database.sqlite
 
     - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DB_CONNECTION: mysql
-        DB_DATABASE: db_test
-        DB_PORT: 3306
-        DB_USER: root
-        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-
       run: |
         php artisan migrate
         ./vendor/bin/phpunit
+
+      env:
+        DB_CONNECTION: mysql
+        DB_DATABASE: db_test
+        DB_PORT: 33306
+        DB_USER: root
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
   sonarcloud:
     needs: Tests
