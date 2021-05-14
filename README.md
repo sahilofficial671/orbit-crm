@@ -7,6 +7,6 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sahilofficial671_orbit-crm&metric=alert_status)](https://sonarcloud.io/dashboard?id=sahilofficial671_orbit-crm)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sahilofficial671_orbit-crm&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=sahilofficial671_orbit-crm)
 
-Play with App at https://orbit-crm.webiggle.com/
+Play with App at https://orbit-crm.webiggle.com
 
 Orbit CRM is light weight Contacts Management Software.
