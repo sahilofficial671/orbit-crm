@@ -14,30 +14,31 @@ jobs:
             mkdir ./resources
             ls
             cd ./resources/;ls;
+            rsync;
 
-      - run:
-          name: Deploy Over SSH
-          command: |
-            echo $SSH_USERNAME;
-            echo $SSH_HOST;
-            ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST  "ls;cd /var/www;ls";
-            scp -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST:/var/www/cloud-life/.env ./resources;
-            cd ./resources/;ls;
+      # - run:
+      #     name: Deploy Over SSH
+      #     command: |
+      #       echo $SSH_USERNAME;
+      #       echo $SSH_HOST;
+      #       ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST  "ls;cd /var/www;ls";
+      #       scp -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST:/var/www/cloud-life/.env ./resources;
+      #       cd ./resources/;ls;
 
-      - store_artifacts:
-          path: ./resources
+      # - store_artifacts:
+      #     path: ./resources
 
-      - run:
-          name: Creating Dummy Artifacts
-          command: |
-            echo "my artifact file" > /test/new.text;
-            echo $TEST > /test/new.text;
-            echo $TEST;
+      # - run:
+      #     name: Creating Dummy Artifacts
+      #     command: |
+      #       echo "my artifact file" > /test/new.text;
+      #       echo $TEST > /test/new.text;
+      #       echo $TEST;
 
-      - run:
-          command: |
-            zip -r test.zip *
+      # - run:
+      #     command: |
+      #       zip -r test.zip *
       
-      - store_artifacts:
-          path: ./test.zip
+      # - store_artifacts:
+      #     path: ./test.zip
       
