@@ -5,6 +5,16 @@ jobs:
       - image: cimg/php:7.2.24
     working_directory: /test
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "31:26:11:20:e3:11:8b:89:eb:b2:19:1e:92:a7:ef:be"
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh $SSH_USERNAME@$SSH_HOST;
+            ls
+            cd /var/www/run
+
       - run:
           name: Creating Dummy Artifacts
           command: |
@@ -18,3 +28,4 @@ jobs:
       
       - store_artifacts:
           path: ./test.zip
+      
