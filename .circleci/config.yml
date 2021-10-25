@@ -14,7 +14,17 @@ jobs:
             mkdir ./resources
             ls
             cd ./resources/;ls;
-            rsync;
+
+      - run:
+          name: Install Dependencies
+          command: |
+            apt add rsync
+            rsync
+            apk add zip
+            apk add openssh-client
+            ssh
+            mkdir -p ~/.ssh
+            chmod 700 ~/.ssh
 
       # - run:
       #     name: Deploy Over SSH
