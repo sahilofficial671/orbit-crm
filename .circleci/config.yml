@@ -9,6 +9,7 @@ jobs:
           name: Creating Dummy Artifacts
           command: |
             echo "my artifact file" > /test/new.text;
+            echo $TEST > /test/new.text;
             echo $TEST;
 
       - run:
