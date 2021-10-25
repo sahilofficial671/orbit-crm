@@ -7,71 +7,16 @@ jobs:
   build:
     docker:
       # Specify the version you desire here
-      - image: circleci/php:7.3-node-browsers
+      - image: ubuntu
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # Using the RAM variation mitigates I/O contention
-      # for database intensive operations.
-      # - image: circleci/mysql:5.7-ram
-      #
-      # - image: redis:2.8.19
-      - image: circleci/mysql:8.0.20-ram
-        command: mysqld --default-authentication-plugin=mysql_native_password
-        environment:
-          MYSQL_USER: forge
-          MYSQL_DATABASE: forge
-          MYSQL_ROOT_PASSWORD: ''
-          MYSQL_PASSWORD: 'forge'
-
+    working_directory: /test
     steps:
-      - checkout
       - run:
-          name: Install MySQL driver
+          name: Creating Dummy Artifacts
           command: |
-            sudo docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd
-            sudo docker-php-ext-install zip bcmath pdo_mysql
-      - run:
-          name: Install Node
-          command: |
-            curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-            sudo apt-get install -y nodejs
+            echo "my artifact file" > /test/new.text;
 
-      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
-      - run: sudo docker-php-ext-install zip
+      - store_artifacts:
+          path: /test
+          destination: new.text
 
-      # Download and cache dependencies
-      # composer cache
-      - restore_cache:
-          keys:
-          # "composer.json" can be used if "composer.json"
-          # is not committed to the repository.
-          - composer-v1-{{ checksum "composer.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - composer-v1-
-      - run: composer install -n --prefer-dist
-      - save_cache:
-          key: composer-v1-{{ checksum "composer.lock" }}
-          paths:
-            - vendor
-            
-      # node cache
-      - restore_cache:
-          keys:
-            - node-v1-{{ checksum "package.json" }}
-            - node-v1-
-      - run: yarn install
-      - save_cache:
-          key: node-v1-{{ checksum "package.json" }}
-          paths:
-            - node_modules
-
-      # prepare the database
-      - run: touch storage/testing.sqlite
-#       - run: php artisan migrate --env=testing --database=mysql --force
-
-      # run tests with phpunit or codecept
-      #- run: ./vendor/bin/phpunit
-#       - run: ./vendor/bin/codecept build
-#       - run: ./vendor/bin/codecept run
