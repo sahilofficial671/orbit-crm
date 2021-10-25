@@ -11,23 +11,20 @@ jobs:
           name: Install Dependencies
           command: |
             apk add rsync
-            rsync
 
-      # - run:
-      #     name: Creating Dummy Artifacts
-      #     command: |
-      #       mkdir ./resources
-      #       ls
-      #       cd ./resources/;ls;
-      # - run:
-      #     name: Deploy Over SSH
-      #     command: |
-      #       echo $SSH_USERNAME;
-      #       echo $SSH_HOST;
-      #       ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST  "ls;cd /var/www;ls";
-      #       scp -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST:/var/www/cloud-life/.env ./resources;
-      #       cd ./resources/;ls;
-
+      - run:
+          name: Creating Dummy Artifacts
+          command: |
+            mkdir ./resources
+      - run:
+          name: Deploy Over SSH
+          command: |
+            echo $SSH_USERNAME;
+            echo $SSH_HOST;
+            ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST  "ls;cd /var/www;ls";
+            rsync -a --exclude=node_modules --exclude=vendor $SSH_USERNAME@$SSH_HOST:/var/www/cloud-life/* ./resources;
+            cd ./resources/;ls;
+      #scp -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST:/var/www/cloud-life/.env ./resources;
       # - store_artifacts:
       #     path: ./resources
 
