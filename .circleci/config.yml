@@ -19,7 +19,7 @@ jobs:
             echo $SSH_USERNAME;
             echo $SSH_HOST;
             ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST  "ls;cd /var/www;ls";
-            scp -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST:/var/www/cloud-life/.env ./resources/"
+            scp -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST:/var/www/cloud-life/.env ./resources/
             cd /resources/;ls;
 
       - store_artifacts:
