@@ -14,10 +14,6 @@ jobs:
             chmod 700 ~/.ssh
             mkdir ./resources
 
-      # - add_ssh_keys:
-      #     fingerprints:
-      #       - "31:26:11:20:e3:11:8b:89:eb:b2:19:1e:92:a7:ef:be"
-
       - run:
           name: Download Project
           command: |
