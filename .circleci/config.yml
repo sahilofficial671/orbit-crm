@@ -2,7 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/base:edge
+      - image: cimg/php:7.2.24
+    working_directory: /test
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -10,7 +11,9 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            uname -a
+            echo $SSH_USERNAME;
+            echo $SSH_HOST;
+            ssh StrictHostKeyChecking no $SSH_USERNAME@$SSH_HOST
 
       - run:
           name: Creating Dummy Artifacts
