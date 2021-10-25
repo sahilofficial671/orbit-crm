@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/php:7.2.24
+      - image: cimg/base:edge
     steps:
       - add_ssh_keys:
           fingerprints:
