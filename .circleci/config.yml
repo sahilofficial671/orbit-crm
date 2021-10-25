@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            apt-get install rsync
+            sudo apt-get install rsync
             rsync
 
       # - run:
