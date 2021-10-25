@@ -9,15 +9,14 @@ jobs:
       - image: cimg/php:7.2.24
     working_directory: /test
     steps:
-      # - run:
-      #     name: Creating Dummy Artifacts
-      #     command: |
-      #       echo "my artifact file" > /test/new.text;
-
-      # - store_artifacts:
-      #     path: /test
-      #     destination: new.text
+      - run:
+          name: Creating Dummy Artifacts
+          command: |
+            echo "my artifact file" > /test/new.text;
 
       - run:
           command: |
-            zip
+            zip test.zip ./
+      
+      - store_artifacts:
+          path: ./test.zip
