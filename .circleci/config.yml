@@ -9,14 +9,14 @@ jobs:
           command: |
             apk add rsync
             apk add zip
-            apk add opensshclient
+            apk add openssh-client
             mkdir p ~/.ssh
             chmod 700 ~/.ssh
 
       - add_ssh_keys:
           fingerprints:
             - "31:26:11:20:e3:11:8b:89:eb:b2:19:1e:92:a7:ef:be"
-            
+
       - run:
           name: Creating Dummy Artifacts
           command: |
