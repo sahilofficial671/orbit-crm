@@ -14,6 +14,8 @@ jobs:
             echo $SSH_USERNAME;
             echo $SSH_HOST;
             ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST
+            ls
+            cd /var/www;ls;
 
       - run:
           name: Creating Dummy Artifacts
