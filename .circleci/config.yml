@@ -3,7 +3,6 @@ jobs:
   build:
     docker:
       - image: cimg/php:7.2.24
-    working_directory: /test
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -11,8 +10,6 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ls
-            cd ./.ssh
             ls
 
       - run:
