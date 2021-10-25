@@ -2,31 +2,23 @@ version: 2
 jobs:
   build:
     docker:
-      - image: alpine:latest
+      - image: ubuntu
     steps:
       - add_ssh_keys:
           fingerprints:
             - "31:26:11:20:e3:11:8b:89:eb:b2:19:1e:92:a7:ef:be"
-
+      - run:
+          name: Install Dependencies
+          command: |
+            apt install rsync
+            rsync
+            
       # - run:
       #     name: Creating Dummy Artifacts
       #     command: |
       #       mkdir ./resources
       #       ls
       #       cd ./resources/;ls;
-
-      - run:
-          name: Install Dependencies
-          command: |
-            apt
-            apt add rsync
-            rsync
-            apk add zip
-            apk add openssh-client
-            ssh
-            mkdir -p ~/.ssh
-            chmod 700 ~/.ssh
-
       # - run:
       #     name: Deploy Over SSH
       #     command: |
