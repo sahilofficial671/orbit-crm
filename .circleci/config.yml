@@ -10,9 +10,9 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            apt install rsync
+            apt-get install rsync
             rsync
-            
+
       # - run:
       #     name: Creating Dummy Artifacts
       #     command: |
