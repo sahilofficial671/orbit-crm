@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ubuntu
+      - image: alpine
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -10,8 +10,8 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            apt update
-            apt install rsync
+            apt -y update
+            apt -y add rsync
             rsync
 
       # - run:
