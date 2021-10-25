@@ -8,15 +8,12 @@ jobs:
           fingerprints:
             - "31:26:11:20:e3:11:8b:89:eb:b2:19:1e:92:a7:ef:be"
 
-      - setup_remote_docker:
-          docker_layer_caching: true
-
       - run:
           name: Creating Dummy Artifacts
           command: |
             mkdir ./resources
             ls
-            
+
       - run:
           name: Deploy Over SSH
           command: |
