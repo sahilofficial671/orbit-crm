@@ -12,7 +12,7 @@ jobs:
 
       - run:
           command: |
-            zip test.zip ./test
+            zip -r test.zip *
       
       - store_artifacts:
           path: ./test.zip
