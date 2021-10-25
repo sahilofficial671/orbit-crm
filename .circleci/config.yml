@@ -6,9 +6,7 @@ version: 2
 jobs:
   build:
     docker:
-      # Specify the version you desire here
-      - image: ubuntu
-
+      - image: 7.4.24-browsers
     working_directory: /test
     steps:
       - run:
@@ -20,3 +18,8 @@ jobs:
           path: /test
           destination: new.text
 
+      - run:
+          uses: montudor/action-zip@v1
+          name: Create ZIP File
+          command: |
+            echo "my artifact file" > /test/new.text;
