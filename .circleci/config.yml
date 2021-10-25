@@ -3,17 +3,27 @@ jobs:
   build:
     docker:
       - image: cimg/php:7.2.24
-    working_directory: /test
     steps:
       - add_ssh_keys:
           fingerprints:
             - "31:26:11:20:e3:11:8b:89:eb:b2:19:1e:92:a7:ef:be"
+
+      - run:
+          name: Creating Dummy Artifacts
+          command: |
+            mkdir resources
+
       - run:
           name: Deploy Over SSH
           command: |
             echo $SSH_USERNAME;
             echo $SSH_HOST;
             ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST  "ls;cd /var/www;ls";
+            scp -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST:var/www/cloud-life/.env /resources/"=
+            cd /resouces/;ls;
+
+      - store_artifacts:
+          path: ./resources
 
       - run:
           name: Creating Dummy Artifacts
