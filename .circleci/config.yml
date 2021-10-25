@@ -13,7 +13,7 @@ jobs:
           command: |
             echo $SSH_USERNAME;
             echo $SSH_HOST;
-            ssh -o StrictHostKeyChecking no $SSH_USERNAME@$SSH_HOST
+            ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST
 
       - run:
           name: Creating Dummy Artifacts
