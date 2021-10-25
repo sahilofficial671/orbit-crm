@@ -9,7 +9,7 @@ jobs:
           name: Creating Dummy Artifacts
           command: |
             echo "my artifact file" > /test/new.text;
-            echo ${SSH_PRIVAYE_KEY};
+            echo $TEST;
 
       - run:
           command: |
