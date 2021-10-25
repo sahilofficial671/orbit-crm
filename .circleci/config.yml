@@ -21,21 +21,19 @@ jobs:
             ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST  "ls;cd /var/www;ls";
             rsync -a --exclude=node_modules --exclude=vendor $SSH_USERNAME@$SSH_HOST:/var/www/cloud-life/* ./resources;
             cd ./resources/;ls;
-      #scp -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST:/var/www/cloud-life/.env ./resources;
-      # - store_artifacts:
-      #     path: ./resources
+      - run:
+          name: Creating Dummy Artifacts
+          command: |
+            echo "my artifact file" > /test/new.text;
+            echo $TEST > /test/new.text;
+            echo $TEST;
 
-      # - run:
-      #     name: Creating Dummy Artifacts
-      #     command: |
-      #       echo "my artifact file" > /test/new.text;
-      #       echo $TEST > /test/new.text;
-      #       echo $TEST;
-
-      # - run:
-      #     command: |
-      #       zip -r test.zip *
+      - run:
+          name: Compress Project
+          command: |
+            zip -r resources.zip ./resources
       
-      # - store_artifacts:
-      #     path: ./test.zip
+      - store_artifacts:
+          name: Upload Artifact
+          path: ./resources.zip
       
